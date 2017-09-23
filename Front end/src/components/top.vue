@@ -1,7 +1,27 @@
+<script>
+import { actions } from '../store';
+
+export default {
+    vuex: {
+        getters: {
+            session: ({ sessions, currentSessionId }) => sessions.find(session => session.id === currentSessionId)
+        }
+    },
+    data () {
+        return {
+            content: ''
+        };
+    },
+    methods: {
+        
+    }
+};
+</script>
+
 <template>
     <div class="header">
         <div class="container">
-            <p>贝奥兰迪</p>
+            <p>{{session.user.name}}</p>
             <p class="lastSeen">Last Seen 16.09.07</p>
         </div>
     </div>
