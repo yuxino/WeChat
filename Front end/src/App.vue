@@ -1,69 +1,40 @@
+<template>
+    <div class="container">
+        <div class="wx-app">
+            <wx-aside></wx-aside>
+            <wx-main></wx-main>
+        </div>
+        <copy-right></copy-right>
+    </div>
+</template>
+
 <script>
-import { actions } from './store';
-
-import Card from 'components/card';
-import List from 'components/list';
-import Top from 'components/top';
-import Text from 'components/text';
-import Message from 'components/message';
-
+import WxAside   from '@/components/Aside/Aside'
+import WxMain    from '@/components/Main/Main'
+import CopyRight from '@/components/CopyRight'
 
 export default {
-    components: { Card, List, Top , Text, Message },
-    vuex: {
-        actions: actions
-    },
-    created () {
-        this.initData();
-    }
+  name: 'App',
+  components: { WxAside , WxMain, CopyRight }
 }
 </script>
 
-<template>
-<div id="app">
-    <div class="sidebar">
-        <card></card>
-        <list></list>
-    </div>
-    <div class="main">
-        <top></top>
-        <message></message>
-        <text></text>
-    </div>
-</div>
-</template>
+<style lang="sass">
+    body,html,#app
+      height: 100%
+      font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif
+      background: url(/static/bg.jpg) no-repeat 50%
+      margin: 0
+      background-size: cover
 
-<style lang="less" scoped>
-#app {
-    margin: 150px auto;
-    width: 800px;
-    height: 600px;
+    .container
+      max-width: 1000px
+      min-width: 800px
+      height: 80%
+      min-height: 600px
+      padding-top: 100px
+      margin: 0 auto
 
-    overflow: hidden;
-    border-radius: 3px;
-
-    .sidebar, .main {
-        height: 100%;
-    }
-    .sidebar {
-        float: left;
-        width: 200px;
-        color: #f4f4f4;
-        background-color: #FFFFFF;
-    }
-    .main {
-        position: relative;
-        overflow: hidden;
-        background-color: #eee;
-    }
-    .text {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-    }
-    .message {
-        height: ~'calc(100% - 100px)';
-    }
-}
+    .wx-app
+      height: 100%
 </style>

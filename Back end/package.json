@@ -1,0 +1,16 @@
+{
+  "name": "Bronya-Front-end",
+  "description": "重装ウサギ１９ｃ、発射",
+  "author": "nbsaw",
+  "scripts": {
+    "dev": "supervisor server.js",
+    "server" : "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  }
+}

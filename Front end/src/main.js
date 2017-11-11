@@ -1,14 +1,13 @@
-// polyfill
-import 'babel-polyfill';
+import Vue from 'vue'
+import store from '@/store/store'
+import App from './App'
+import '@/components/common/common.sass'
 
-import Vue from 'vue';
-import App from './App';
-import store from './store';
-
-Vue.config.devtools = true;
+Vue.config.devtools = true
+Vue.config.productionTip = false
 
 new Vue({
-    el: 'body',
+    el: '#app',
     components: { App },
     store: store
 });
