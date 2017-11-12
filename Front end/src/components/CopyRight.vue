@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'wx-footer'
+  name: 'CcopyRight'
 }
 </script>
 

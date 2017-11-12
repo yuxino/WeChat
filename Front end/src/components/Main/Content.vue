@@ -1,18 +1,7 @@
 <template>
   <div class="content">
     <p class="time">11:20</p>
-    <div class="message">
-      <div>
-        <div class="bubble">asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
-      </div>
-      <img src="/static/avatar.jpg" alt=""/>
-    </div>
-    <div class="message self">
-      <div>
-        <div class="bubble">asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
-      </div>
-      <img src="/static/avatar.jpg" alt="" />
-    </div>
+
   </div>
 </template>
 

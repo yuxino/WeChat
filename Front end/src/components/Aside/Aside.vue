@@ -1,7 +1,7 @@
 <template>
   <div class="aside clearfix">
       <Aside-Header></Aside-Header>
-      <Aside-List></Aside-List>
+      <Aside-List emptyMsg="哇呜好可怜这个人没有任何联系人.." :items="items"></Aside-List>
   </div>
 </template>
 
@@ -12,7 +12,17 @@ import AsideList   from './List'
 
 export default {
   name: 'Aside',
-  components: { AsideHeader , AsideList }
+  components: { AsideHeader , AsideList },
+  data () {
+    return {
+      items: new Array(10).fill({
+        userName: 'Ass We Can',
+        avatar: "/static/avatar.jpg",
+        time: "03:15",
+        lastMsg: '我的屁股是真的大'
+      })
+    }
+  }
 }
 </script>
 

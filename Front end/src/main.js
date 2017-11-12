@@ -9,5 +9,5 @@ Vue.config.productionTip = false
 new Vue({
     el: '#app',
     components: { App },
-    store: store
+    store
 });

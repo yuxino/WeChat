@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <div class="wx-app">
-            <wx-aside></wx-aside>
-            <wx-main></wx-main>
-        </div>
-        <copy-right></copy-right>
+      <div class="wx-app">
+          <WxAside></WxAside>
+          <WxMain></WxMain>
+      </div>
+      <CopyRight></CopyRight>
     </div>
 </template>
 
@@ -37,4 +37,9 @@ export default {
 
     .wx-app
       height: 100%
+
+    @media (max-height: 800px) , (max-width:1000px)
+      .container
+        padding-top: 0;
+        height: 100%;
 </style>

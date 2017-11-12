@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="btn-box">
-            <span class="describe">按下Ctrl+Enter换行</span> 
+            <span class="describe">按下Ctrl+Enter发送</span> 
             <button class="send">发送</button>
         </div>
     </div>

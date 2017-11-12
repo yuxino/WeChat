@@ -1,15 +1,31 @@
 <template>
     <div class="tab">
-        <div class="icon "><i class='iconfont icon-qipao icons active'></i></div>
-        <div class="icon"><i class="iconfont icon-wenzhang_weixuanzhong icons"></i></div>
-        <div class="icon"><i class="iconfont icon-lianxiren icons"></i></div>
+        <div class="icon" v-for="({iconName,viewName},index) of views" :key="index" @click="viewChange(viewName)">          
+          <i class='iconfont icons':class="[iconName,{active : viewName === currentView}]"></i>
+        </div>
     </div>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  name: 'Tab',
+  computed: {
+    ...mapState(['views','currentView'])
+  },
+  methods: {
+    viewChange(viewName){
+      this.$store.commit('viewChange',viewName)
+    },
+  }
+}
+</script>
 
 
 <style lang="sass" scoped>
   .tab
-    padding-bottom: 6px
+    padding-bottom: 3px
     border-bottom: 1px solid #24272c;
     &:after
       content: ""; 
@@ -19,22 +35,18 @@
       visibility: hidden 
 
   .tab > div
-    width: 32.3333%
+    width: 33.3333%
     float: left
     text-align: center
-    border-right: 1px solid #24272c
     color: white
     cursor: pointer
-
-  .tab > div:last-child
-    border: 0
 
   .tab > div > i
     font-size: 24px
 
   .icon
     display: inline-block
-    width: 32%
+    width: 33%
     padding: 5px 0
     text-align: center
     box-sizing: border-box
@@ -47,5 +59,4 @@
 
   .icon + .icon
     border-left: 1px solid #24272c
-    
 </style>

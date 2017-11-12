@@ -1,20 +1,20 @@
 <template>
-  <div class="main">
-     <MainTitle></MainTitle>
-     <MainContent></MainContent>
-     <MainText></MainText>
-  </div>
+  <keep-alive class="main" :is="currentView"></keep-alive>
 </template>
 
 
 <script>
-import MainTitle   from './Title'
-import MainContent from './Content' 
-import MainText    from './Text'
+import { mapState } from 'vuex'
+import Chat         from './chat'
+import Subject      from './subject'
+import Contact      from './contact'
 
 export default {
   name: 'Main',
-  components: { MainTitle , MainContent , MainText }
+  computed: {
+    ...mapState(['views','currentView'])
+  },
+  components: { Chat , Subject , Contact }
 }
 </script>
 
