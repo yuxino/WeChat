@@ -1,8 +1,8 @@
 <template>
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="items" v-for="(item,index) of items" :key="index">
-      <img class="avatar" :src="item.avatar" alt="">
+    <div class="items" v-for="(item,index) of items" :key="index" :class="{ active : index === currentChat }" @click="chatChange(index)">
+      <img class="avatar" :src="item.avatar" alt="头像">
       <div class="wrapper">
         <span class="username">
           {{ item.userName }}
@@ -15,44 +15,39 @@
         </span>
       </div>
     </div>
-    <!-- <div class="items active">
-      <img class="avatar" src="/static/avatar.jpg" alt="">
-      <div class="wrapper">
-        <span class="username">
-          Nbsaw
-          <span class="time">11:00</span>
-        </span>
-        <span class="last-message">asdasd</span>
-      </div>
-    </div>
-
-    <div class="items">
-      <img class="avatar" src="/static/avatar.jpg" alt="">
-      <div class="wrapper">
-        <span class="username">
-          Nbsaw
-          <span class="time">11:00</span>
-        </span>
-        <span class="last-message">asdasd</span>
-      </div>
-    </div> -->
   </div>
 </template>
 
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'List',
-  props: ['items','emptyMsg'],
+  name: 'ChatList',
+  emptyMsg: '哇呜好可怜这个人没有和任何人交流过...',
+  data () {
+    return {
+      items: new Array(4).fill({
+        userName: 'Ass We Can',
+        avatar: "/static/avatar.jpg",
+        time: "03:15",
+        lastMsg: '我的屁股是真的大'
+      })
+    }
+  },
+  methods: {
+    chatChange(index) {
+      this.$store.commit('chatChange',index)
+    }
+  },
   computed: {
+    ...mapState(['currentChat']),
     itemsEmpty () {
-      console.log(this.items.length === 0)
       return this.items.length === 0
     }
   }
 }
 </script>
-
 
 <style lang="sass" scoped>
   .list
@@ -70,9 +65,14 @@ export default {
     font-size: 14px
 
   .items
-    padding: 15px
+    padding: 18px
     height: 40px
     overflow: hidden
+    cursor: pointer
+    &:hover
+      background: #3a3f45
+      *
+      color: white
 
   .items.active 
     background: #3a3f45

@@ -8,7 +8,7 @@
 
 <script>
 import ChatTitle   from './Title'
-import ChatContent from './Content' 
+import ChatContent from './Content'
 import ChatText    from './Text'
 
 export default {

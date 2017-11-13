@@ -5,7 +5,7 @@
         </div>
         <div class="text-box">
             <div class="text-wrapper">
-                <textarea></textarea>
+                <textarea spellcheck="false"></textarea>
             </div>
         </div>
         <div class="btn-box">

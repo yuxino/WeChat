@@ -26,12 +26,13 @@ export default {
 <style lang="sass" scoped>
   .tab
     padding-bottom: 3px
-    border-bottom: 1px solid #24272c;
+    border-bottom: 1px solid #24272c
+    overflow: hidden
     &:after
-      content: ""; 
-      display: block; 
-      height: 0; 
-      clear: both; 
+      content: ""
+      display: block
+      height: 0;
+      clear: both
       visibility: hidden 
 
   .tab > div
@@ -54,9 +55,11 @@ export default {
   .icons.active 
     color: #3caf36
 
-  .icons 
+  .icons
+    width: 100%
+    display: block
     font-size: 22px
 
-  .icon + .icon
+  .icon + .icon > .icons
     border-left: 1px solid #24272c
 </style>

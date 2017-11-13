@@ -1,7 +1,6 @@
 <template>
   <div class="content">
-    <p class="time">11:20</p>
-
+    
   </div>
 </template>
 
@@ -12,7 +11,6 @@ export default {
 }
 </script>
 
-
 <style lang="sass" scoped>
   .content
     position: absolute
@@ -22,7 +20,6 @@ export default {
     bottom: 200px
     padding: 0 20px
     overflow: auto
-
 
   .time
     font-size: 12px
@@ -79,5 +76,4 @@ export default {
 
   .self > div
     background-color: white
-
 </style>

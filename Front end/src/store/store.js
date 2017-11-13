@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Subject from './subject'
 
 Vue.use(Vuex)
 
@@ -16,11 +17,21 @@ const store = new Vuex.Store({
         iconName: 'icon-lianxiren',
       }
     ],
-    currentView: 'chat'
+    currentView: 'chat',
+    currentChat: 0,
+    currentSubject: 0,
+    currentContact: 0,
+    subject: Subject
   },
   mutations: {
     viewChange (state,viewName) {
       state.currentView = viewName
+    },
+    chatChange (state,index) {
+      state.currentChat = index
+    },
+    subjectChange (state,index) {
+      state.currentSubject = index
     }
   }
 })

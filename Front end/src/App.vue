@@ -42,4 +42,5 @@ export default {
       .container
         padding-top: 0;
         height: 100%;
+
 </style>

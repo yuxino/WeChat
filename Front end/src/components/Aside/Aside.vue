@@ -1,28 +1,24 @@
 <template>
   <div class="aside clearfix">
       <Aside-Header></Aside-Header>
-      <Aside-List emptyMsg="哇呜好可怜这个人没有任何联系人.." :items="items"></Aside-List>
+      <keep-alive :is="currentView"></keep-alive>
   </div>
 </template>
 
 
 <script>
-import AsideHeader from './header'
-import AsideList   from './List'
+import { mapState } from 'vuex'
+import AsideHeader  from './header'
+import Chat         from './chat'
+import Subject      from './subject'
+import Contact      from './contact'
 
 export default {
   name: 'Aside',
-  components: { AsideHeader , AsideList },
-  data () {
-    return {
-      items: new Array(10).fill({
-        userName: 'Ass We Can',
-        avatar: "/static/avatar.jpg",
-        time: "03:15",
-        lastMsg: '我的屁股是真的大'
-      })
-    }
-  }
+  components: { AsideHeader , Chat , Subject , Contact },
+  computed: {
+    ...mapState(['currentView'])
+  },
 }
 </script>
 

@@ -1,8 +1,8 @@
 <template>
     <div class="myInfo clearfix">
-        <img class="avatar" src="/static/avatar.jpg" alt="">
-        <span class="username">Nbsaw</span>
-        <i class="menu iconfont icon-menu"></i>
+      <img class="avatar" src="/static/mine.png" alt="">
+      <span class="username">Nbsaw</span>
+      <i class="menu iconfont icon-menu"></i>
     </div>
 </template>
 
@@ -39,5 +39,6 @@ export default {
       text-align: center
       font-size: 20px
       color: #777777
+      cursor: pointer
 
 </style>
