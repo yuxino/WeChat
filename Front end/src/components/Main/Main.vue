@@ -1,5 +1,7 @@
 <template>
-  <keep-alive class="main" :is="currentView"></keep-alive>
+  <keep-alive>
+    <component class="main" :is="currentView"></component>
+  </keep-alive>
 </template>
 
 

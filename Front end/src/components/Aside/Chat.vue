@@ -1,49 +1,39 @@
 <template>
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="items" v-for="(item,index) of items" :key="index" :class="{ active : index === currentChat }" @click="chatChange(index)">
-      <img class="avatar" :src="item.avatar" alt="头像">
+    <div class="items" v-for="(item,userId) of chat" :key="userId" :class="{ active : userId === currentChat }" @click="chatChange(userId)">
+      <img class="avatar" :src="contact[userId].avatar" alt="头像">
       <div class="wrapper">
         <span class="username">
-          {{ item.userName }}
+            {{ contact[userId].userName }}
           <span class="time">
             {{ item.time }}
           </span>
         </span>
         <span class="last-message">
-          {{ item.lastMsg }}
+            {{ item.content }}
         </span>
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
 import { mapState } from 'vuex'
+import _            from 'lodash'
 
 export default {
   name: 'ChatList',
   emptyMsg: '哇呜好可怜这个人没有和任何人交流过...',
-  data () {
-    return {
-      items: new Array(4).fill({
-        userName: 'Ass We Can',
-        avatar: "/static/avatar.jpg",
-        time: "03:15",
-        lastMsg: '我的屁股是真的大'
-      })
-    }
-  },
   methods: {
-    chatChange(index) {
-      this.$store.commit('chatChange',index)
+    chatChange(userId) {
+      this.$store.commit('chatChange',userId)
     }
   },
   computed: {
-    ...mapState(['currentChat']),
+    ...mapState(['currentChat','chat','contact']),
     itemsEmpty () {
-      return this.items.length === 0
+      return this.contact.length === 0
     }
   }
 }

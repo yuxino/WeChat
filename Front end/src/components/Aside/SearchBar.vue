@@ -4,9 +4,15 @@
       <input type="text" class="search-input" placeholder="搜索" spellcheck="false" @input="search">
       <div class="search-container" v-show="active" v-click-outside="hide">
         <div v-if="isEmpty" class="emptyMsg">找不到匹配的结果</div>
-        <p v-for="(item,index) of result" :key="index">
-          {{ item }}
-        </p>
+        <div v-else class="result-container">
+          <div class="tip">
+            好友
+          </div>
+          <div class="item clearfix" :class="index === 0 ? 'active' : ''" v-for="(item,index) of result" :key="index">
+            <img class="avatar" src="/static/mine.png">
+            <div class="username">{{ item }}</div>
+          </div>
+          </div>
       </div>
   </div>
 </template>
@@ -30,7 +36,7 @@ export default {
       if(_.isEmpty(keyword)) { this.active = false ; return }
       this.active = true
       if(keyword === 'a') return []
-      return [keyword]
+      return [keyword,keyword]
     }
   },
   methods: {
@@ -80,8 +86,39 @@ export default {
       padding: 0px 9px
       font-weight: 400
       color: #787b87
-      margin-top: 10px
       background-color: #393c43
       border-bottom-left-radius: 2px
       border-bottom-right-radius: 2px
+
+    .tip
+      padding: 0px 9px
+      font-size: 14px
+      color: #787b87
+      background-color: #393c43
+
+    .result-container
+      max-height: 420px
+      overflow: auto
+
+    .item
+      line-height: 30px
+      padding: 10px 9px
+      cursor: pointer
+      border-bottom: 1px solid #33363b;
+      background-color: #393c43
+
+    .active
+      background: #595b64
+
+    .avatar
+      display: block
+      float: left
+      width: 30px
+      height: 30px
+      margin-right: 15px
+      border-radius: 2px
+
+    .username
+      overflow: hidden
+      text-overflow: ellipsis
 </style>

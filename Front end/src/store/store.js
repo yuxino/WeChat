@@ -1,6 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import Subject from './subject'
+import Vue     from 'vue'
+import Vuex    from 'vuex'
+import chat    from './chat'
+import subject from './subject'
+import contact from './contact'
+import _       from 'lodash'
 
 Vue.use(Vuex)
 
@@ -18,20 +21,28 @@ const store = new Vuex.Store({
       }
     ],
     currentView: 'chat',
-    currentChat: 0,
+    currentChat: '1000',
     currentSubject: 0,
     currentContact: 0,
-    subject: Subject
+    chat,
+    subject,
+    contact,
+    text: {
+      "1000" : "balbabla"
+    }
   },
   mutations: {
     viewChange (state,viewName) {
       state.currentView = viewName
     },
-    chatChange (state,index) {
-      state.currentChat = index
+    chatChange (state,userId) {
+      state.currentChat = userId
     },
     subjectChange (state,index) {
       state.currentSubject = index
+    },
+    updateText (state,content) {
+      state.text[state.currentChat] = content
     }
   }
 })

@@ -2,12 +2,30 @@ const subject = [
   {
     userName  : '123',
     avatar    : '/static/deep.png',
-    msg       : 'FFF'
+    msg       : [
+      {
+        time: '',
+        content: ''
+      },
+      {
+        time: '',
+        content: ''
+      }
+    ]
   },
   {
     userName  : '456',
     avatar    : '/static/van.png',
-    msg       : 'DDD'
+    msg       : [
+      {
+        time: '',
+        content: ''
+      },
+      {
+        time: '',
+        content: ''
+      }
+    ]
   }
 ]
 
