@@ -7,7 +7,7 @@ import _       from 'lodash'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+const store = new Vuex.Store({ 
   state: {
     views: [{
         viewName: 'chat',
@@ -27,9 +27,7 @@ const store = new Vuex.Store({
     chat,
     subject,
     contact,
-    text: {
-      "1000" : "balbabla"
-    }
+    text: {}
   },
   mutations: {
     viewChange (state,viewName) {

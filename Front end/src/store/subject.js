@@ -4,12 +4,12 @@ const subject = [
     avatar    : '/static/deep.png',
     msg       : [
       {
-        time: '',
-        content: ''
+        time: '11:40',
+        content: 'Ass We Can'
       },
       {
-        time: '',
-        content: ''
+        time: '11:40',
+        content: 'Balbabla'
       }
     ]
   },
@@ -18,12 +18,12 @@ const subject = [
     avatar    : '/static/van.png',
     msg       : [
       {
-        time: '',
-        content: ''
+        time: '11:40',
+        content: '呵呵呵呵呵'
       },
       {
-        time: '',
-        content: ''
+        time: '11:40',
+        content: '发送到发送到'
       }
     ]
   }

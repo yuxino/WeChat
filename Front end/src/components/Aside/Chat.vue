@@ -3,7 +3,7 @@
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
     <div class="items" v-for="(item,userId) of chat" :key="userId" :class="{ active : userId === currentChat }" @click="chatChange(userId)">
       <img class="avatar" :src="contact[userId].avatar" alt="头像">
-      <div class="wrapper">
+      <div class="wrapper" @contextmenu.prevent='menu'>
         <span class="username">
             {{ contact[userId].userName }}
           <span class="time">
@@ -20,7 +20,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import _            from 'lodash'
 
 export default {
   name: 'ChatList',
@@ -28,6 +27,9 @@ export default {
   methods: {
     chatChange(userId) {
       this.$store.commit('chatChange',userId)
+    },
+    menu (e) {
+      console.log(e.x)
     }
   },
   computed: {

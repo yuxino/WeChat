@@ -8,7 +8,7 @@
           </div>
           <div class="text-box">
               <div class="text-wrapper">
-                  <textarea @input="type" @keydown.enter.prevent="sumbit" @keyup.ctrl.enter="newLine" :value="textContent" spellcheck="false"></textarea>
+                  <textarea @input="type" @keyup.ctrl.enter="sumbit" :value="textContent" spellcheck="false"></textarea>
               </div>  
           </div>
           <div class="btn-box">
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import ChatTitle    from './Title'
-import ChatContent  from './Content'
-
+import { mapState }     from 'vuex'
+import { mapMutations } from 'vuex'
+import ChatTitle        from './Title'
+import ChatContent      from './Content'
 
 export default {
   name: 'Chat',
@@ -38,14 +38,14 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['updateText']),
     type (e) {
-      this.$store.commit('updateText',e.target.value)
+      this.updateText(e.target.value)
     },
     sumbit (e) {
-      // sumibt text 
-    },
-    newLine (e) {
-      e.target.value += "\n"
+      // sumibt text
+      e.target.value = ''
+      this.updateText(e.target.value)
     }
   }
 }

@@ -8,6 +8,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'Tab',
@@ -15,9 +16,7 @@ export default {
     ...mapState(['views','currentView'])
   },
   methods: {
-    viewChange(viewName){
-      this.$store.commit('viewChange',viewName)
-    },
+    ...mapMutations(['viewChange'])
   }
 }
 </script>
