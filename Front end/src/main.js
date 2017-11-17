@@ -2,7 +2,7 @@ import Vue from 'vue'
 import store from '@/store/store'
 import App from './App'
 import '@/components/common/common.sass'
-import ClickOutSide from '@/libs/ClickOutSide'
+import ClickOutSide from '@/directives/ClickOutSide'
 
 Vue.config.devtools = true
 Vue.config.productionTip = false
