@@ -24,6 +24,7 @@
 <script>
 import { mapState }     from 'vuex'
 import { mapMutations } from 'vuex'
+import { mapGetters }   from 'vuex'
 import ChatTitle        from './Title'
 
 export default {
@@ -37,9 +38,7 @@ export default {
   },
   computed: {
     ...mapState(['currentChat','chat','contact','text']),
-    userName() {
-      return this.contact[this.currentChat] ? this.contact[this.currentChat].userName : ''
-    },
+    ...mapGetters(['userName']),
     textContent() {
       return this.text[this.currentChat]
     }

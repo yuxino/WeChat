@@ -1,35 +1,31 @@
 <template>
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="items" v-for="(lastReply,userId) of chat" 
+    <div class="items" v-for="(item,userId) of chatList" 
                         :key="userId"
                         :class="{ active : userId === currentChat }"
                         @contextmenu.prevent="showMenu({$event,menuName})"
                         @click="chatChange(userId)">
-      <img class="avatar" :src="contact[userId].avatar" alt="头像">
+      <img class="avatar" :src="item.avatar" alt="头像">
       <div class="wrapper">
         <span class="username">
-            {{ contact[userId].userName }}
+            {{ item.userName }}
           <span class="time">
-            {{ lastReply.time }}
+            {{ item.time }}
           </span>
         </span>
         <span class="last-message">
-            {{ lastReply.content }}
+            {{ item.content }}
         </span>
       </div>
     </div>
   </div>
 </template>
 
-<!--
-  v-click-outside="hiddenMenu"
-  @contextmenu.prevent='showMenu'
--->
-
 <script>
 import { mapState }     from 'vuex'
 import { mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'ChatList',
@@ -41,15 +37,13 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['showMenu','closeMenu']),
-    chatChange(userId) {
-      this.$store.commit('chatChange',userId)
-    }
+    ...mapMutations(['showMenu','closeMenu','chatChange']),
   },
   computed: {
-    ...mapState(['currentChat','chat','contact']),
+    ...mapGetters(['chatList']),
+    ...mapState(['currentChat','contact']),
     itemsEmpty () {
-      return this.contact.length === 0
+      return this.chatList.length === 0
     }
   }
 }
