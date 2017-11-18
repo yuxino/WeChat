@@ -12,8 +12,7 @@
     "test": "npm run unit"
   },
   "dependencies": {
-    "full-icu": "^1.2.0",
-    "normalize.css": "^7.0.0",
+    "pinyin": "^2.8.3",
     "vue": "^2.5.2",
     "vuex": "^2.5.0"
   },
