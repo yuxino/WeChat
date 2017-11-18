@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import store from '@/store/store'
+import store from '@/store'
 import App from './App'
-import '@/components/common/common.sass'
+import '@/sass/index.sass'
 import ClickOutSide from '@/directives/ClickOutSide'
 
 Vue.config.devtools = true

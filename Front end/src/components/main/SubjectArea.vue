@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SubjectTitle></SubjectTitle>
+    <subject-title></subject-title>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import SubjectTitle from './Title'
 
 export default {
-  name: 'Subject',
+  name: 'SubjectArea',
   components: { SubjectTitle }
 }
 </script>

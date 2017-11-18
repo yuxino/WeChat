@@ -1,22 +1,25 @@
 <template>
   <keep-alive>
-    <component class="main" :is="currentView"></component>
+    <component class="main" :is="viewName"></component>
   </keep-alive>
 </template>
 
-
 <script>
 import { mapState } from 'vuex'
-import Chat         from './chat'
-import Subject      from './subject'
-import Contact      from './contact'
+import ChatArea         from './ChatArea'
+import SubjectArea      from './SubjectArea'
+import ContactArea      from './ContactArea'
+import viewConfig   from '@/config/viewConfig'
 
 export default {
   name: 'Main',
   computed: {
-    ...mapState(['views','currentView'])
+    ...mapState(['currentView']),
+    viewName() {
+      return viewConfig[this.currentView]['main']
+    }
   },
-  components: { Chat , Subject , Contact }
+  components: { ChatArea , SubjectArea , ContactArea }
 }
 </script>
 

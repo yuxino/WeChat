@@ -1,16 +1,16 @@
 <template>
     <div class="title">
-        <span class="content">{{ title }}</span>
+        <span class="content">
+          <slot></slot>
+        </span>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'title',
-  props: ['title']
+  name: 'title'
 }
 </script>
-
 
 <style lang="sass" scoped>
   .title

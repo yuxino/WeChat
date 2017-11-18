@@ -12,8 +12,23 @@ import { mapMutations } from 'vuex'
 
 export default {
   name: 'Tab',
+  data () {
+    return {
+      views: [{
+          viewName: 'chat',
+          iconName: 'icon-qipao',
+        },{
+          viewName: 'subject',
+          iconName: 'icon-wenzhang_weixuanzhong',
+        },{
+          viewName: 'contact',
+          iconName: 'icon-lianxiren',
+        }
+      ]
+    }
+  },
   computed: {
-    ...mapState(['views','currentView'])
+    ...mapState(['currentView'])
   },
   methods: {
     ...mapMutations(['viewChange'])

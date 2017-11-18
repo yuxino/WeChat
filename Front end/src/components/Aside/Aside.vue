@@ -1,7 +1,9 @@
 <template>
   <div class="aside clearfix">
-      <Aside-Header></Aside-Header>
-      <keep-alive :is="currentView"></keep-alive>
+      <aside-header></aside-header>
+      <keep-alive>
+          <component :is="viewName"></component>
+      </keep-alive>
   </div>
 </template>
 
@@ -9,26 +11,28 @@
 <script>
 import { mapState } from 'vuex'
 import AsideHeader  from './header'
-import Chat         from './chat'
-import Subject      from './subject'
-import Contact      from './contact'
+import ChatList         from './ChatList'
+import SubjectList      from './SubjectList'
+import ContactList      from './ContactList'
+import viewConfig   from '@/config/viewConfig'
 
 export default {
   name: 'Aside',
-  components: { AsideHeader , Chat , Subject , Contact },
+  components: { AsideHeader , ChatList , SubjectList , ContactList },
   computed: {
-    ...mapState(['currentView'])
+    ...mapState(['currentView']),
+    viewName() {
+      return viewConfig[this.currentView]['aside']
+    }
   },
 }
 </script>
 
-
 <style lang="sass" scoped>
     .aside
-        float: left
-        position: relative
-        width: 260px
-        height: 100%
-        background-color: #2e3238
-        overflow: auto
+      float: left
+      position: relative
+      width: 260px
+      height: 100%
+      background-color: #2e3238
 </style>

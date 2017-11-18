@@ -5,17 +5,31 @@
           <WxMain></WxMain>
       </div>
       <CopyRight></CopyRight>
+      <!--Menu ! -->
+      <component :is="currentMenu" v-show="menuStatus" :position="position" v-click-outside="closeMenu"></component>
     </div>
 </template>
 
 <script>
-import WxAside   from '@/components/Aside/Aside'
-import WxMain    from '@/components/Main/Main'
-import CopyRight from '@/components/CopyRight'
+import WxAside          from '@/components/aside/Aside'
+import WxMain           from '@/components/main/Main'
+import CopyRight        from '@/components/footer/CopyRight'
+
+import ChatListMenu     from '@/components/menu/ChatListMenu'
+import ChatAreaMenu     from '@/components/menu/ChatAreaMenu'
+
+import { mapState }     from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'App',
-  components: { WxAside , WxMain, CopyRight }
+  components: { WxAside , WxMain, CopyRight , ChatListMenu , ChatAreaMenu},
+  computed: {
+    ...mapState(['menuStatus','position','currentMenu','menuStatus','position'])
+  },
+  methods: {
+    ...mapMutations(['closeMenu'])
+  }
 }
 </script>
 
@@ -36,21 +50,21 @@ export default {
       margin: 0 auto
       transition: .2s
 
-    .wx-app
-      height: 100%
-
     ::-webkit-scrollbar
-      width: 6px
+     width: 6px
       height: 6px
 
     ::-webkit-scrollbar-thumb
       border-radius: 3px
-      -moz-border-radius: 3px
-      -webkit-border-radius: 3px
+        -moz-border-radius: 3px
+        -webkit-border-radius: 3px
       background-color: #6f6f6f
 
     ::-webkit-scrollbar-track
       background-color: transparent
+
+    .wx-app
+      height: 100%
 
     @media (max-height: 800px) , (max-width:1000px)
       .container

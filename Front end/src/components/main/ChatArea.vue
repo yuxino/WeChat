@@ -1,7 +1,9 @@
 <template>
   <div>
-      <ChatTitle :title="userName"></ChatTitle>
-      <ChatContent></ChatContent>
+      <chat-title>{{ userName }}</chat-title>
+      <div class="content" @contextmenu.prevent="showMenu({$event,menuName})">
+        
+      </div>
       <div class="content-area">
           <div class="tools-bar">
               <i class="iconfont icon-face ccc"></i>
@@ -23,11 +25,16 @@
 import { mapState }     from 'vuex'
 import { mapMutations } from 'vuex'
 import ChatTitle        from './Title'
-import ChatContent      from './Content'
 
 export default {
-  name: 'Chat',
-  components: { ChatTitle , ChatContent  },
+  name: 'ChatArea',
+  components: { ChatTitle },
+  data() {
+    return {
+      menuShow: false,
+      menuName: 'ChatAreaMenu'
+    }
+  },
   computed: {
     ...mapState(['currentChat','chat','contact','text']),
     userName() {
@@ -38,7 +45,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['updateText']),
+    ...mapMutations(['updateText','showMenu']),
     type (e) {
       this.updateText(e.target.value)
     },
@@ -115,4 +122,69 @@ export default {
     font-size: 12px
     margin-left: 10px
     margin-right: 7px
+
+  .content
+    position: absolute
+    top: 44px
+    left: 0
+    right: 0
+    bottom: 200px
+    padding: 0 20px
+    overflow: auto
+
+  .time
+    font-size: 12px
+    padding: 1px 18px
+    color: #b2b2b2
+    text-align: center
+
+  .message
+    text-align: right
+    margin-bottom: 15px
+
+  .message > div
+    position: relative
+    max-width: 500px
+    background-color: #b2e281
+    color: black
+    display: inline-block
+    word-wrap: break-word
+
+  .message > div:after
+    position: absolute
+    top: 14px
+    border: 6px solid transparent
+    content: " "
+    border-left-color: #b2e281
+    border-left-width: 4px
+
+  .bubble
+    padding: 5px 10px
+    text-align: left
+    font-size: 14px
+
+  .message > img
+    width: 40px
+    height: 40px
+    margin-left: 15px
+    float: right
+
+  .self
+    text-align: left
+
+  .self > img
+    float: left
+    margin-right: 15px
+
+  .self > div:after
+    content: " "
+    position: absolute
+    top: 14px
+    right: 100%
+    border: 6px solid transparent
+    border-right-color: white
+    border-right-width: 4px
+
+  .self > div
+    background-color: white
 </style>

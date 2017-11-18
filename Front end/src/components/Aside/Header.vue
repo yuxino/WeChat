@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-      <MyInfo></MyInfo>
-      <SearchBar></SearchBar>
-      <Tab></Tab>
+      <my-info></my-info>
+      <search-bar></search-bar>
+      <tab></tab>
   </div>
 </template>
 

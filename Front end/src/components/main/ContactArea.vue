@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ContactTitle></ContactTitle>
+    <contact-title></contact-title>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import ContactTitle from './Title'
 
 export default {
-  name: 'Contact',
+  name: 'ContactArea',
   components: { ContactTitle }
 }
 </script>

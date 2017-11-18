@@ -1,35 +1,49 @@
 <template>
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="items" v-for="(item,userId) of chat" :key="userId" :class="{ active : userId === currentChat }" @click="chatChange(userId)">
+    <div class="items" v-for="(lastReply,userId) of chat" 
+                        :key="userId"
+                        :class="{ active : userId === currentChat }"
+                        @contextmenu.prevent="showMenu({$event,menuName})"
+                        @click="chatChange(userId)">
       <img class="avatar" :src="contact[userId].avatar" alt="头像">
-      <div class="wrapper" @contextmenu.prevent='menu'>
+      <div class="wrapper">
         <span class="username">
             {{ contact[userId].userName }}
           <span class="time">
-            {{ item.time }}
+            {{ lastReply.time }}
           </span>
         </span>
         <span class="last-message">
-            {{ item.content }}
+            {{ lastReply.content }}
         </span>
       </div>
     </div>
   </div>
 </template>
 
+<!--
+  v-click-outside="hiddenMenu"
+  @contextmenu.prevent='showMenu'
+-->
+
 <script>
-import { mapState } from 'vuex'
+import { mapState }     from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'ChatList',
   emptyMsg: '哇呜好可怜这个人没有和任何人交流过...',
+  data() {
+    return {
+      menuName: 'ChatListMenu',
+      menuShow: false
+    }
+  },
   methods: {
+    ...mapMutations(['showMenu','closeMenu']),
     chatChange(userId) {
       this.$store.commit('chatChange',userId)
-    },
-    menu (e) {
-      console.log(e.x)
     }
   },
   computed: {
@@ -44,11 +58,12 @@ export default {
 <style lang="sass" scoped>
   .list
     position: absolute
-    top: 151px
+    top: 152px
     bottom: 0px
     left: 0
     right: 0
     overflow: auto
+    overflow-y: auto
 
   .emptyPlaceHolder
     margin: 30px auto
