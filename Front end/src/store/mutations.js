@@ -2,11 +2,14 @@ const mutations = {
   viewChange (state,viewName) {
     state.currentView = viewName
   },
-  chatChange (state,userId) {
-    state.currentChat = userId
+  chatChange (state,chatId) {
+    state.currentChatId = chatId
   },
-  subjectChange (state,index) {
-    state.currentSubject = index
+  subjectChange (state,subjectId) {
+    state.currentSubjectId = subjectId
+  },
+  contactChange (state,contactId) {
+    state.currentContactId = contactId
   },
   updateText (state,content) {
     state.text[state.currentChat] = content

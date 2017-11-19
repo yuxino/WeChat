@@ -1,10 +1,10 @@
 <template>
   <div>
       <chat-title>{{ userName }}</chat-title>
-      <div class="content" @contextmenu.prevent="showMenu({$event,menuName})">
+      <div v-if="userName" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
         
       </div>
-      <div class="content-area">
+      <div v-if="userName" class="content-area">
           <div class="tools-bar">
               <i class="iconfont icon-face ccc"></i>
           </div>
@@ -17,6 +17,10 @@
               <span class="describe">按下Ctrl+Enter发送</span> 
               <button class="send">发送</button>
           </div>
+      </div>
+      <div v-else class="tip-wrapper">
+        <i class="iconfont icons icon-weixin wx-icon"></i>
+        <p class="tip">未选择聊天</p>
       </div>
   </div>
 </template>
@@ -184,4 +188,18 @@ export default {
 
   .self > div
     background-color: white
+
+  .tip-wrapper
+    margin-top: 120px
+    text-align: center
+
+  .wx-icon
+    color: #e2e2e2
+    font-size: 100px
+
+  .tip
+    color: #ccc
+    margin: 0
+    margin-top: 5px
+    font-size: 13px
 </style>

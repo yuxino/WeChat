@@ -32,6 +32,15 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  .list
+    position: absolute
+    top: 149px
+    bottom: 0px
+    left: 0
+    right: 0
+    overflow: auto
+    overflow-y: auto
+    
   .emptyPlaceHolder
     margin: 30px auto
     text-align: center

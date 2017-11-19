@@ -1,11 +1,11 @@
 <template>
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="items" v-for="(item,userId) of chatList" 
-                        :key="userId"
-                        :class="{ active : userId === currentChat }"
+    <div class="items" v-for="(item,chatId) of chatList" 
+                        :key="chatId"
+                        :class="{ active : chatId === currentChatId }"
                         @contextmenu.prevent="showMenu({$event,menuName})"
-                        @click="chatChange(userId)">
+                        @click="chatChange(chatId)">
       <img class="avatar" :src="item.avatar" alt="头像">
       <div class="wrapper">
         <span class="username">
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     ...mapGetters(['chatList']),
-    ...mapState(['currentChat','contact']),
+    ...mapState(['currentChatId','contact']),
     itemsEmpty () {
       return this.chatList.length === 0
     }
@@ -50,7 +50,7 @@ export default {
 <style lang="sass" scoped>
   .list
     position: absolute
-    top: 152px
+    top: 149px
     bottom: 0px
     left: 0
     right: 0

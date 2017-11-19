@@ -10,9 +10,9 @@ const state = {
   subject,
   contact,
   // 各种视图列表选中的条目
-  currentChat: '1000',
-  currentSubject: 0,
-  currentContact: 0,
+  currentChatId: null,
+  currentSubjectId: null,
+  currentContactId: null,
   // 输入框
   text: {},
   // 按钮相关状态

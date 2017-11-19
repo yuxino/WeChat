@@ -14,12 +14,11 @@ export default {
 
 <style lang="sass" scoped>
   .title
-    line-height: 25px
+    line-height: 30px
     text-align: center
     padding: 10px 0
     margin: 0 19px
     border-bottom: 1px solid #d6d6d6
-
 
   .content
     display: inline-block

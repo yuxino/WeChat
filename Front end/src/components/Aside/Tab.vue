@@ -38,8 +38,6 @@ export default {
 
 <style lang="sass" scoped>
   .tab
-    padding-bottom: 3px
-    border-bottom: 1px solid #24272c
     overflow: hidden
     &:after
       content: ""
@@ -57,6 +55,7 @@ export default {
     padding: 6px 0
     text-align: center
     box-sizing: border-box
+    cursor: pointer
 
   .icons.active 
     color: #3caf36

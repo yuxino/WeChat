@@ -4,7 +4,10 @@
 
     <div v-for="(contacts,group) of contactList" :key="group">
       <h4 class="contact-group-title">{{ group }}</h4>
-      <div class="contact-item clearfix" v-for="(item,userId) of contacts" :key="userId">
+      <div class="contact-item clearfix" v-for="(item,contactId) of contacts"
+                                         :class="{active : contactId == currentContactId}" 
+                                         @click="contactChange(contactId)"
+                                         :key="contactId">
         <img :src="item.avatar" class="contact-avatar">
         <div class="contact-name">{{ item.userName }}</div>
       </div>
@@ -14,18 +17,21 @@
 </template>
 
 <script>
-import { mapState,mapGetters } from 'vuex'
+import { mapState, mapGetters , mapMutations } from 'vuex'
 
 export default {
-  name: 'SubjectList',
+  name: 'ContactList',
   data () {
     return {
       emptyMsg: '咦 你一个联系人都没有...',
       items: []
     }
   },
+  methods: {
+    ...mapMutations(['contactChange'])
+  },
   computed: {
-    ...mapState(['currentChat']),
+    ...mapState(['currentContactId']),
     ...mapGetters(['contactList']),
     itemsEmpty () {
       return this.contactList.length === 0
@@ -37,7 +43,7 @@ export default {
 <style lang="sass" scoped>
   .list
     position: absolute
-    top: 152px
+    top: 149px
     bottom: 0px
     left: 0
     right: 0
@@ -61,6 +67,10 @@ export default {
   .contact-item
     padding: 10px 18px 9px
     color: white
+    cursor: pointer
+
+  .contact-item + .contact-item
+    border-top: 1px solid #292c33
   
   .contact-name
     line-height: 30px
@@ -73,7 +83,7 @@ export default {
     float: left
     margin-right: 7px
 
-  h3
-    margin: 0
-    color: white
+  .active
+    background: #3b4047
+
 </style>

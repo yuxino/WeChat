@@ -38,7 +38,10 @@ const getters = {
     return sortByKey(contacts)
   },
   userName: state => {
-    return state.contact[state.currentChat].userName
+    return state.currentChatId ? state.contact[state.currentChatId].userName : ''
+  },
+  currentContact: state => {
+    return state.currentContactId ? state.contact[state.currentContactId] : null
   }
 }
 
