@@ -2,11 +2,9 @@
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
     <div class="items" v-for="(item,index) of items" :key="index" @click="subjectChange(index)">
-      
     </div>
   </div>
 </template>
-
 
 <script>
 import { mapState } from 'vuex'
@@ -15,7 +13,7 @@ export default {
   name: 'SubjectList',
   data () {
     return {
-      emptyMsg: '近期没有收到过任何文章...',
+      emptyMsg: '暂无文章...',
       items: []
     }
   },

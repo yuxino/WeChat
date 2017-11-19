@@ -32,7 +32,7 @@ export default {
     .aside
       float: left
       position: relative
-      width: 260px
+      width: 280px
       height: 100%
       background-color: #2e3238
 </style>

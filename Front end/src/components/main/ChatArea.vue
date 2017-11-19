@@ -22,9 +22,7 @@
 </template>
 
 <script>
-import { mapState }     from 'vuex'
-import { mapMutations } from 'vuex'
-import { mapGetters }   from 'vuex'
+import { mapState , mapMutations , mapGetters }     from 'vuex'
 import ChatTitle        from './Title'
 
 export default {

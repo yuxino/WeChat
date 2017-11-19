@@ -4,7 +4,7 @@ import contact from './contact'
 
 const state = {
   // 当前视图
-  currentView: 'chat',
+  currentView: 'contact',
   // 各种视图列表的数据
   chat,
   subject,

@@ -26,7 +26,7 @@ export default {
     .username
       display: inline-block
       vertical-align: middle
-      width: 140px;
+      width: 160px;
       margin-left: 5px;
       color: white
 

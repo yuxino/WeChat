@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { mapMutations } from 'vuex'
+import { mapState , mapMutations } from 'vuex'
 
 export default {
   name: 'Tab',
@@ -49,20 +48,13 @@ export default {
       clear: both
       visibility: hidden 
 
-  .tab > div
-    width: 33.3333%
-    float: left
-    text-align: center
-    color: white
-    cursor: pointer
-
   .tab > div > i
     font-size: 24px
 
   .icon
     display: inline-block
     width: 33%
-    padding: 5px 0
+    padding: 6px 0
     text-align: center
     box-sizing: border-box
 

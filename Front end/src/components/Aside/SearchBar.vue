@@ -50,14 +50,15 @@ export default {
     .search-bar
       position: relative
       box-sizing: border-box
-      line-height: 34px
+      line-height: 32px
       width: 100%
       padding: 0 18px
 
     .search-icon
       position: absolute
-      left: 25px
-      top: 1.2px
+      left: 24px
+      top: 1.3px
+      font-size: 19px
       bottom: 0
       color: #808285
 
