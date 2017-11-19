@@ -26,7 +26,6 @@ export default {
     ...mapState(['currentSubject','subject']),
     itemsEmpty () {
       return this.items.length === 0
-      // return this.subject.length === 0
     }
   }
 }
