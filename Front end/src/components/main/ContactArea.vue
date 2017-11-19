@@ -3,7 +3,10 @@
     <contact-title>详细信息</contact-title>
     <div v-if="currentContact" class="contact-container">
       <img class="contact-avatar" :src="currentContact.avatar" alt="">
-      <div><h4 class="contact-userName">{{ currentContact.userName }}</h4></div>
+      <div>
+        <h4 class="contact-userName">{{ currentContact.userName }}</h4>
+        <i class="iconfont icons" :class="[currentContact.sex === 'male' ? 'icon-nanren contact-icon-male' : 'icon-nvrentouxiang contact-icon-female']"></i>
+      </div>
       <p v-if="currentContact.bio" class="contact-bio">{{ currentContact.bio }}</p>
       <div class="contact-another-info-container">
         <p><label>备注 :   </label>尻</p>
@@ -49,9 +52,18 @@ export default {
     border-radius: 4px
 
   .contact-userName
+    display: inline-block
     margin: 0
     font-weight: 400
     font-size: 24px
+
+  .contact-icon-male
+    color: #5da7ca
+    font-size: 12px
+
+  .contact-icon-female
+    color: #dd6665
+    font-size: 12px
 
   .contact-bio
     margin: 0

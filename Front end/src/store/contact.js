@@ -10,7 +10,7 @@ const contact = {
     userName: '大象',
     avatar  : '/static/av2.jpg',
     bio     : '果然还是太傻了。',
-    sex     : 'female',
+    sex     : 'male',
   },
   1002 : {
     userName: '土鳖',
@@ -39,7 +39,7 @@ const contact = {
   1006 : {
     userName: '张尻乐',
     avatar  : '/static/av7.jpg',
-    bio     : '',
+    bio     : '慢热 ！',
     sex     : 'male',
   }
 }
