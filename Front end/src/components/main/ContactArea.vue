@@ -9,8 +9,8 @@
       </div>
       <p v-if="currentContact.bio" class="contact-bio">{{ currentContact.bio }}</p>
       <div class="contact-another-info-container">
-        <p><label>备注 :   </label>尻</p>
-        <p><label>地区 :   </label>Latin</p>
+        <p v-if="currentContact.remarks"><label>备注 :   </label>{{ currentContact.remarks }}</p>
+        <p v-if="currentContact.location"><label>地区 :   </label>{{ currentContact.location }}</p>
       </div>
       <button class="contact-send-btn" @click="newChat">发消息</button>
     </div>

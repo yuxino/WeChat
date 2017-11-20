@@ -1,16 +1,16 @@
 <template>
-  <div class="search-bar">
+  <div class="search-bar" v-click-outside="closeSearch">
       <i class="iconfont icon-sousuo search-icon"></i>
-      <input type="text" class="search-input" placeholder="搜索" spellcheck="false" @input="search">
-      <div class="search-container" v-show="active" v-click-outside="hide">
+      <input type="text" class="search-input" placeholder="搜索" spellcheck="false" @input="search" blur="closeSearch">
+      <div class="search-container" v-show="active">
         <div v-if="isEmpty" class="emptyMsg">找不到匹配的结果</div>
         <div v-else class="result-container">
           <div class="tip">
             好友
           </div>
           <div class="item clearfix" :class="index === 0 ? 'active' : ''" v-for="(item,index) of result" :key="index">
-            <img class="avatar" src="/static/mine.png">
-            <div class="username">{{ item }}</div>
+            <img class="avatar" :src="item.avatar">
+            <div class="username">{{ item.remarks ? item.remarks : item.userName  }}</div>
           </div>
           </div>
       </div>
@@ -19,7 +19,9 @@
 
 
 <script>
-import _ from 'lodash'
+import _            from 'lodash'
+import pyfl         from '@/libs/pyfl'
+import { mapState } from 'vuex'
 
 export default {
   name: 'SearchBar',
@@ -30,18 +32,23 @@ export default {
     }
   },
   computed: {
+    ...mapState(['contact']),
     isEmpty: ({result}) => _.isEmpty(result),
     result () {
       let keyword = _.trim(this.keyword)
       if(_.isEmpty(keyword)) { this.active = false ; return }
       this.active = true
-      if(keyword === 'a') return []
-      return [keyword,keyword]
+      let py = pyfl(keyword)
+      const regex = new RegExp(py,'i')
+      //查询出对应的联系人信息
+      return _.filter(this.contact , ({remarks , userName}) => regex.test(pyfl(remarks ? remarks : userName)))
     }
   },
   methods: {
-    hide: function(){ this.active = false },
-    search: _.debounce(function(e) { this.keyword = e.target.value },200)
+    closeSearch: function(){ this.active = false },
+    search: _.debounce(function(e) { 
+      this.keyword = e.target.value
+     },200)
   }
 }
 </script>

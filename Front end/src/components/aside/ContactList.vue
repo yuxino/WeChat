@@ -1,7 +1,6 @@
 <template>
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-
     <div v-for="(contacts,group) of contactList" :key="group">
       <h4 class="contact-group-title">{{ group }}</h4>
       <div class="contact-item clearfix" v-for="(item,contactId) of contacts"
@@ -9,10 +8,9 @@
                                          @click="contactChange(contactId)"
                                          :key="contactId">
         <img :src="item.avatar" class="contact-avatar">
-        <div class="contact-name">{{ item.userName }}</div>
+        <div class="contact-name">{{ item.remarks ? item.remarks : item.userName }}</div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -85,5 +83,4 @@ export default {
 
   .active
     background: #3b4047
-
 </style>

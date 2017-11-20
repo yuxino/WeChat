@@ -1,3 +1,6 @@
+import pyfl from '@/libs/pyfl/index'
+import Vue from 'Vue'
+
 const mutations = {
   viewChange (state,viewName) {
     state.currentView = viewName
@@ -22,6 +25,17 @@ const mutations = {
   },
   closeMenu (state) {
     state.menuStatus = false
+  },
+  // TODO 还没想好怎么做这里
+  addContact: state => {
+    // Vue.set(state.contact ,  , {
+    //     userName: 'Z.',
+    //     avatar  : '/static/av7.jpg',
+    //     bio     : '慢热 ！',
+    //     sex     : 'male',
+    //     remarks : '张尻乐',
+    //     location: '上海 虹口'
+    // })
   }
 }
 

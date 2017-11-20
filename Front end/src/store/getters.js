@@ -28,7 +28,8 @@ const getters = {
   contactList: state => {
     let contacts = {}
     _.forEach(state.contact , (item,userId) => {
-      let firstLetter = getFirstLetter(item.userName)
+      // 如果有备注 则优先备注
+      let firstLetter = item.remarks  != '' ? getFirstLetter(item.remarks) : getFirstLetter(item.userName)
       if(!contacts[firstLetter]){
         contacts[firstLetter] = {}
       }
