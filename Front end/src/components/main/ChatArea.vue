@@ -2,10 +2,10 @@
   <div>
       <chat-title>{{ userName }}</chat-title>
       <div v-if="userName" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
-        <p class="time">11:23</p>
-        <div class="message clearfix">
-          <img src="/static/av1.jpg" alt="">
-          <div class="bubble">asd</div>
+        <!-- <p class="time">11:23</p> -->
+        <div v-for="(item,index) of chatsHistory[currentChatId]" :key="index" class="message clearfix" :class="{self : item.self }">
+          <img :src="item.self ? '/static/mine.png' : contact[currentChatId].avatar" alt="">
+          <div class="bubble">{{item.msg}}</div>
         </div>
       </div>
       <div v-if="userName" class="content-area">
@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['currentChat','chat','contact','text']),
+    ...mapState(['currentChat','chat','contact','text','chatsHistory','currentChatId']),
     ...mapGetters(['userName']),
     textContent() {
       return this.text[this.currentChat]
@@ -145,7 +145,8 @@ export default {
     text-align: center
 
   .message
-    text-align: right
+    text-align: left
+    margin-top:  15px
     margin-bottom: 15px
 
   .message > div
@@ -153,16 +154,43 @@ export default {
     display: inline-block
     box-sizing: border-box
     max-width: 500px
-    background-color: #b2e281
+    background-color: white    
     color: black
     word-wrap: break-word
 
   .message > div:after
+    content: " "
+    position: absolute
+    top: 14px
+    right: 100%
+    border: 6px solid transparent
+    border-right-color: white
+    border-right-width: 4px
+
+  .message > img
+    width: 40px
+    height: 40px
+    float: left
+    margin-right: 15px
+    margin-left: 0
+
+  .self
+    text-align: right
+
+  .self > img
+    float: right
+    margin-right: 0 
+    margin-left: 15px
+
+  .self > div
+    background-color: #b2e281
+
+  .self > div:after
+    content: " "
     position: absolute
     top: 14px
     right: -10px
     border: 6px solid transparent
-    content: " "
     border-left-color: #b2e281
     border-left-width: 4px
 
@@ -172,32 +200,6 @@ export default {
     text-align: left
     font-size: 14px
     border-radius: 3px
-
-  .message > img
-    width: 40px
-    height: 40px
-    margin-left: 15px
-    float: right
-
-  .self
-    text-align: left
-
-  .self > img
-    float: left
-    margin-right: 15px
-    margin-left: 0
-
-  .self > div:after
-    content: " "
-    position: absolute
-    top: 14px
-    right: 100%
-    border: 6px solid transparent
-    border-right-color: white
-    border-right-width: 4px
-
-  .self > div
-    background-color: white
 
   .tip-wrapper
     margin-top: 120px

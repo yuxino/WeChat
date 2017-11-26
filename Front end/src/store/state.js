@@ -1,6 +1,7 @@
 import chat    from './chat'
 import subject from './subject'
 import contact from './contact'
+import chatsHistory from './chatsHistory'
 
 const state = {
   // 当前视图
@@ -9,6 +10,7 @@ const state = {
   chat,
   subject,
   contact,
+  chatsHistory,
   // 各种视图列表选中的条目
   currentChatId: null,
   currentSubjectId: null,

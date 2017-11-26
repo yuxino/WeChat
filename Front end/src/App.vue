@@ -6,7 +6,7 @@
       </div>
       <CopyRight></CopyRight>
       <!--Menu ! -->
-      <component :is="currentMenu" v-show="menuStatus" :position="position" v-click-outside="closeMenu"></component>
+      <component :is="currentMenu" v-show="menuStatus" :position="position" v-click-outside="_closeMenu"></component>
     </div>
 </template>
 
@@ -28,7 +28,11 @@ export default {
     ...mapState(['menuStatus','position','currentMenu','menuStatus','position'])
   },
   methods: {
-    ...mapMutations(['closeMenu'])
+    ...mapMutations(['closeMenu']),
+    // 防止疯狂提交commit
+    _closeMenu () {
+      this.menuStatus && this.$store.commit('closeMenu')
+    }
   }
 }
 </script>
