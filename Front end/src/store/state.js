@@ -15,8 +15,6 @@ const state = {
   currentChatId: null,
   currentSubjectId: null,
   currentContactId: null,
-  // 输入框
-  text: {},
   // 按钮相关状态
   menuStatus: false,
   currentMenu: 'ChatListMenu',

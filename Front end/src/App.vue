@@ -11,15 +11,14 @@
 </template>
 
 <script>
-import WxAside          from '@/components/aside/Aside'
-import WxMain           from '@/components/main/Main'
-import CopyRight        from '@/components/footer/CopyRight'
+import WxAside       from '@/components/aside/Aside'
+import WxMain        from '@/components/main/Main'
+import CopyRight     from '@/components/footer/CopyRight'
 
-import ChatListMenu     from '@/components/menu/ChatListMenu'
-import ChatAreaMenu     from '@/components/menu/ChatAreaMenu'
+import ChatListMenu  from '@/components/menu/ChatListMenu'
+import ChatAreaMenu  from '@/components/menu/ChatAreaMenu'
 
-import { mapState }     from 'vuex'
-import { mapMutations } from 'vuex'
+import { mapState , mapMutations } from 'vuex'
 
 export default {
   name: 'App',

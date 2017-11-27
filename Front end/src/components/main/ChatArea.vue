@@ -1,20 +1,27 @@
 <template>
   <div>
       <chat-title>{{ userName }}</chat-title>
-      <div v-if="userName" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
-        <!-- <p class="time">11:23</p> -->
+      <div v-if="currentChatId" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
+        <p class="time">11:23</p>
+        <!--遍历聊天记录
+            TODO 缓存聊天记录
+        -->
         <div v-for="(item,index) of chatsHistory[currentChatId]" :key="index" class="message clearfix" :class="{self : item.self }">
           <img :src="item.self ? '/static/mine.png' : contact[currentChatId].avatar" alt="">
           <div class="bubble">{{item.msg}}</div>
         </div>
       </div>
-      <div v-if="userName" class="content-area">
+      <div v-if="currentChatId" class="content-area">
           <div class="tools-bar">
               <i class="iconfont icon-face ccc"></i>
           </div>
           <div class="text-box">
               <div class="text-wrapper">
-                  <textarea @input="type" @keyup.ctrl.enter="sumbit" :value="textContent" spellcheck="false"></textarea>
+                  <textarea :value="message"
+                            @input="type"
+                            @keydown.ctrl.enter="submit"
+                            spellcheck="false">
+                  </textarea>
               </div>  
           </div>
           <div class="btn-box">
@@ -22,7 +29,8 @@
               <button class="send">发送</button>
           </div>
       </div>
-      <!--TODO 暂时没有新消息 -->
+      <!--TODO 如果暂时没有新消息 -->
+      <!--没有选择任何聊天时候的提示-->
       <div v-else class="tip-wrapper">
         <i class="iconfont icons icon-weixin wx-icon"></i>
         <p class="tip">未选择聊天</p>
@@ -31,8 +39,10 @@
 </template>
 
 <script>
-import { mapState , mapMutations , mapGetters }     from 'vuex'
-import ChatTitle        from './Title'
+import { mapState , mapMutations , mapGetters } from 'vuex'
+import ChatTitle from './Title'
+// 缓存输入
+let messageCache = {}
 
 export default {
   name: 'ChatArea',
@@ -40,25 +50,29 @@ export default {
   data() {
     return {
       menuShow: false,
-      menuName: 'ChatAreaMenu'
+      menuName: 'ChatAreaMenu',
+      message: ''
     }
   },
   computed: {
-    ...mapState(['currentChat','chat','contact','text','chatsHistory','currentChatId']),
-    ...mapGetters(['userName']),
-    textContent() {
-      return this.text[this.currentChat]
+    ...mapState(['chat','contact','chatsHistory','currentChatId']),
+    ...mapGetters(['userName'])
+  },
+  watch: {
+    // 监视当前聊天对象的变更
+    currentChatId () {
+      this.text = messageCache[this.currentChatId] 
     }
   },
   methods: {
-    ...mapMutations(['updateText','showMenu']),
+    ...mapMutations(['showMenu']),
     type (e) {
-      this.updateText(e.target.value)
+      this.message = e.target.value
+      messageCache[this.currentChatId] = this.text
     },
-    sumbit (e) {
-      // sumibt text
-      e.target.value = ''
-      this.updateText(e.target.value)
+    submit (e) {
+      this.message = e.target.value = ''
+      messageCache[this.currentChatId] = ''
     }
   }
 }

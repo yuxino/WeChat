@@ -14,9 +14,6 @@ const mutations = {
   contactChange (state,contactId) {
     state.currentContactId = contactId
   },
-  updateText (state,content) {
-    state.text[state.currentChat] = content
-  },
   showMenu (state,{$event,menuName}) {
     let e = event
     state.menuStatus = true
