@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     ...mapGetters(['chatList']),
-    ...mapState(['currentChatId','contact']),
+    ...mapState(['currentChatId']),
     itemsEmpty () {
       return this.chatList.length === 0
     }
@@ -89,6 +89,8 @@ export default {
     span
       display: block
       line-height: 20px
+      overflow: hidden
+      text-overflow: ellipsis
 
   .username
     font-weight: 400

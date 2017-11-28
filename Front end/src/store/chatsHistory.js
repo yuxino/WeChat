@@ -1,6 +1,6 @@
-const msg = (str,date,self=false) => ({
+const msg = (str,time,self=false) => ({
   msg: str,
-  date,
+  time,
   self
 })
 

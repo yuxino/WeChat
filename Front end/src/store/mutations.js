@@ -23,6 +23,14 @@ const mutations = {
   closeMenu (state) {
     state.menuStatus = false
   },
+  sendMessage (state , { currentChatId , message }) {
+    let chat = state.chat
+    state.chatsHistory[currentChatId].push({
+      msg : message,
+      time: new Date(),
+      self: true
+    })
+  },
   // TODO 还没想好怎么做这里
   addContact: state => {
     // Vue.set(state.contact ,  , {

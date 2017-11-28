@@ -15,13 +15,23 @@ const sortByKey = collection => {
     return _(collection).toPairs().sortBy(0).fromPairs().value()
 }
 
+const formatTime = date => {
+  let hour = `${date.getHours()}`.padStart(2,'0')
+  let minutes = `${date.getMinutes()}`.padStart(2,'0')
+  return `${hour}:${minutes}`
+}
+
 const getters = {
   // `最近`联系人列表
   chatList: state => {
     let chats = {}
-    _.forEach(state.chat , (item,userId) => {
-      chats[userId] = {...state.contact[userId],...item}
-    })
+    state.chat.forEach(chatId => {
+      let lastMessage = _.last(state.chatsHistory[chatId])
+      chats[chatId] = {
+        ...state.contact[chatId], // 獲取chatId對應的用户信息
+        time: formatTime(lastMessage.time),
+        content: lastMessage.msg
+    }})
     return chats
   },
   // 联系人列表

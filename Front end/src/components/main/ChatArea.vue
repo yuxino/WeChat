@@ -1,13 +1,13 @@
 <template>
   <div>
       <chat-title>{{ userName }}</chat-title>
-      <div v-if="currentChatId" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
+      <div v-if="currentChatId" id="content" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
         <p class="time">11:23</p>
         <!--遍历聊天记录
             TODO 缓存聊天记录
         -->
         <div v-for="(item,index) of chatsHistory[currentChatId]" :key="index" class="message clearfix" :class="{self : item.self }">
-          <img :src="item.self ? '/static/mine.png' : contact[currentChatId].avatar" alt="">
+          <img :src="item.self ? '/static/mine.png' : contact[currentChatId].avatar">
           <div class="bubble">{{item.msg}}</div>
         </div>
       </div>
@@ -71,8 +71,15 @@ export default {
       messageCache[this.currentChatId] = this.text
     },
     submit (e) {
+      let message = this.message
+      this.$store.commit('sendMessage',{ currentChatId: this.currentChatId , message })
       this.message = e.target.value = ''
       messageCache[this.currentChatId] = ''
+      // 等待数据渲染完成后 调整滚动条
+      this.$nextTick(function(){
+        let container = this.$el.querySelector("#content")
+        container.scrollTop = container.scrollHeight
+      })
     }
   }
 }
@@ -168,9 +175,11 @@ export default {
     display: inline-block
     box-sizing: border-box
     max-width: 500px
-    background-color: white    
-    color: black
+    min-height: 40px
+    white-space: pre-line
     word-wrap: break-word
+    background-color: white
+    color: black
 
   .message > div:after
     content: " "
