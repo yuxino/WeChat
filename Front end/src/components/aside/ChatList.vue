@@ -9,7 +9,7 @@
       <img class="avatar" :src="item.avatar" alt="头像">
       <div class="wrapper">
         <span class="username">
-            {{ item.userName }}
+            {{ item.remarks || item.userName }}
           <span class="time">
             {{ item.time }}
           </span>

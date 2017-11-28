@@ -2,7 +2,7 @@
   <div class="search-bar" v-click-outside="closeSearch">
       <i class="iconfont icon-sousuo search-icon"></i>
       <input type="text" class="search-input" placeholder="搜索" spellcheck="false" @input="search" blur="closeSearch">
-      <div class="search-container" v-show="active">
+      <div class="search-container" v-show="show">
         <div v-if="isEmpty" class="emptyMsg">找不到匹配的结果</div>
         <div v-else class="result-container">
           <div class="tip">
@@ -10,11 +10,10 @@
           </div>
           <div class="item clearfix"
                v-for="(item,contactId) of result"
-               :class="contactId === 0 ? 'active' : ''"
                :key="contactId"
                @click="_newChat(contactId)">
             <img class="avatar" :src="item.avatar">
-            <div class="username">{{ item.remarks ? item.remarks : item.userName  }}</div>
+            <div class="username">{{ item.remarks || item.userName  }}</div>
           </div>
           </div>
       </div>
@@ -31,7 +30,7 @@ export default {
   name: 'SearchBar',
   data() {
     return {
-      active: false,
+      show: false,
       keyword: ''
     }
   },
@@ -40,8 +39,8 @@ export default {
     isEmpty: ({result}) => _.isEmpty(result),
     result () {
       let keyword = _.trim(this.keyword)
-      if(_.isEmpty(keyword)) { this.active = false ; return }
-      this.active = true
+      if(_.isEmpty(keyword)) { return this.show = false }
+      this.show = true
       let py = pyfl(keyword)
       const regex = new RegExp(py,'i')
       //查询出对应的联系人信息
@@ -60,7 +59,7 @@ export default {
       this.newChat(contactId)
       this.closeSearch()
     },
-    closeSearch: function(){ this.active = false },
+    closeSearch: function(){ this.show = false },
     search: _.debounce(function(e) {
       this.keyword = e.target.value
      },200)

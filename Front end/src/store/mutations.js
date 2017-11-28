@@ -26,10 +26,15 @@ const mutations = {
     state.menuStatus = false
   },
   sendMessage (state , message) {
-    // 聊天对象切换
+    // 将当前聊天对象置顶
     let chat = state.chat
-    _.remove(chat,state.currentChatId)
-    chat.unshift(state.currentChatId)
+    for(let index = 0 ; index < chat.length ; index++) {
+      if(chat[index] === state.currentChatId) {
+        chat.splice(index, 1)
+        chat.unshift(state.currentChatId)
+        break
+      }
+    }
     // 感觉这个实现很low
     let history = state.chatsHistory[state.currentChatId] || Vue.set(state.chatsHistory,state.currentChatId,[])
     history.splice(history.length, 1, {
