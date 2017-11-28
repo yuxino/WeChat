@@ -27,11 +27,21 @@ const getters = {
     let chats = {}
     state.chat.forEach(chatId => {
       let lastMessage = _.last(state.chatsHistory[chatId])
-      chats[chatId] = {
-        ...state.contact[chatId], // 獲取chatId對應的用户信息
-        time: formatTime(lastMessage.time),
-        content: lastMessage.msg
-    }})
+      if(lastMessage) {
+        chats[`_${chatId}`] = {
+          ...state.contact[chatId], // 獲取chatId對應的用户信息
+          time: formatTime(lastMessage.time),
+          content: lastMessage.msg
+        }
+      }
+      else {
+        chats[`_${chatId}`] = {
+          ...state.contact[chatId], // 獲取chatId對應的用户信息
+          time: '',
+          content: ''
+        }
+      }
+    })
     return chats
   },
   // 联系人列表
@@ -52,7 +62,7 @@ const getters = {
     return state.currentChatId ? state.contact[state.currentChatId].userName : ''
   },
   currentContact: state => {
-    return state.currentContactId ? state.contact[state.currentContactId] : null
+    return state.currentContactId ? state.contact[state.currentContactId] : ''
   }
 }
 

@@ -4,6 +4,7 @@
       <div v-if="currentChatId" id="content" class="content" @contextmenu.prevent="showMenu({$event,menuName})">
         <p class="time">11:23</p>
         <!--遍历聊天记录
+            TODO 时间算法
             TODO 缓存聊天记录
         -->
         <div v-for="(item,index) of chatsHistory[currentChatId]" :key="index" class="message clearfix" :class="{self : item.self }">
@@ -17,8 +18,7 @@
           </div>
           <div class="text-box">
               <div class="text-wrapper">
-                  <textarea :value="message"
-                            @input="type"
+                  <textarea @input="type"
                             @keydown.ctrl.enter="submit"
                             spellcheck="false">
                   </textarea>
@@ -26,7 +26,7 @@
           </div>
           <div class="btn-box">
               <span class="describe">按下Ctrl+Enter发送</span> 
-              <button class="send">发送</button>
+              <button @click="submit" class="send">发送</button>
           </div>
       </div>
       <!--TODO 如果暂时没有新消息 -->
@@ -41,6 +41,7 @@
 <script>
 import { mapState , mapMutations , mapGetters } from 'vuex'
 import ChatTitle from './Title'
+
 // 缓存输入
 let messageCache = {}
 
@@ -50,8 +51,7 @@ export default {
   data() {
     return {
       menuShow: false,
-      menuName: 'ChatAreaMenu',
-      message: ''
+      menuName: 'ChatAreaMenu'
     }
   },
   computed: {
@@ -61,23 +61,32 @@ export default {
   watch: {
     // 监视当前聊天对象的变更
     currentChatId () {
-      this.text = messageCache[this.currentChatId] 
+      this.$nextTick(function(){
+        // 修正滚动条位置
+        let container = document.querySelector("#content")
+        container.scrollTop = container.scrollHeight
+        // 设置 textarea 内保存过的信息
+        let textarea = this.$el.querySelector('textarea')
+        textarea.value = messageCache[this.currentChatId] || ''
+        textarea.focus()
+      })
     }
   },
   methods: {
     ...mapMutations(['showMenu']),
     type (e) {
-      this.message = e.target.value
-      messageCache[this.currentChatId] = this.text
+      messageCache[this.currentChatId] = e.target.value
     },
     submit (e) {
-      let message = this.message
-      this.$store.commit('sendMessage',{ currentChatId: this.currentChatId , message })
-      this.message = e.target.value = ''
+      // 更新缓存
+      this.$store.commit('sendMessage',messageCache[this.currentChatId])
       messageCache[this.currentChatId] = ''
+      let textarea = this.$el.querySelector('textarea')
+      textarea.value = ''
+
       // 等待数据渲染完成后 调整滚动条
       this.$nextTick(function(){
-        let container = this.$el.querySelector("#content")
+        let container = document.querySelector("#content")
         container.scrollTop = container.scrollHeight
       })
     }

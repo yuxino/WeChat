@@ -11,9 +11,9 @@
 <script>
 import { mapState } from 'vuex'
 import AsideHeader  from './header'
-import ChatList         from './ChatList'
-import SubjectList      from './SubjectList'
-import ContactList      from './ContactList'
+import ChatList     from './ChatList'
+import SubjectList  from './SubjectList'
+import ContactList  from './ContactList'
 import viewConfig   from '@/config/viewConfig'
 
 export default {

@@ -2,10 +2,10 @@
   <div class="list">
     <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
     <div class="items" v-for="(item,chatId) of chatList" 
-                        :key="chatId"
-                        :class="{ active : chatId === currentChatId }"
+                        :key="chatId.substr(1)"
+                        :class="{ active : chatId.substr(1) === currentChatId }"
                         @contextmenu.prevent="showMenu({$event,menuName})"
-                        @click="chatChange(chatId)">
+                        @click="chatChange(chatId.substr(1))">
       <img class="avatar" :src="item.avatar" alt="头像">
       <div class="wrapper">
         <span class="username">
@@ -90,6 +90,7 @@ export default {
       display: block
       line-height: 20px
       overflow: hidden
+      white-space: nowrap
       text-overflow: ellipsis
 
   .username

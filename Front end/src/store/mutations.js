@@ -23,13 +23,22 @@ const mutations = {
   closeMenu (state) {
     state.menuStatus = false
   },
-  sendMessage (state , { currentChatId , message }) {
+  sendMessage (state , message) {
+    // 聊天对象切换
     let chat = state.chat
-    state.chatsHistory[currentChatId].push({
+    _.remove(chat,state.currentChatId)
+    chat.unshift(state.currentChatId)
+    // 感觉这个实现很low
+    let history = state.chatsHistory[state.currentChatId] || Vue.set(state.chatsHistory,state.currentChatId,[])
+    history.splice(history.length, 1, {
       msg : message,
       time: new Date(),
       self: true
     })
+    // state.chat = [1001,1000]
+  },
+  newChat () {
+    
   },
   // TODO 还没想好怎么做这里
   addContact: state => {
