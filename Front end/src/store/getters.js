@@ -63,6 +63,9 @@ const getters = {
   },
   currentContact: state => {
     return state.currentContactId ? state.contact[state.currentContactId] : ''
+  },
+  historys: state => {
+    return state.chatsHistory[state.currentChatId]
   }
 }
 

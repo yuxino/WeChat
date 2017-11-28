@@ -23,14 +23,15 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapState , mapGetters , mapMutations } from 'vuex'
 
 export default {
   name: 'ChatList',
-  emptyMsg: '哇呜好可怜这个人没有和任何人交流过...',
   data() {
     return {
       menuName: 'ChatListMenu',
+      emptyMsg: '哇呜好可怜没有人和你交流...',
       menuShow: false
     }
   },
@@ -41,7 +42,7 @@ export default {
     ...mapGetters(['chatList']),
     ...mapState(['currentChatId']),
     itemsEmpty () {
-      return this.chatList.length === 0
+      return _.isEmpty(this.chatList)
     }
   }
 }

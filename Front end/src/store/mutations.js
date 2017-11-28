@@ -35,20 +35,19 @@ const mutations = {
         break
       }
     }
-    // 感觉这个实现很low
-    let history = state.chatsHistory[state.currentChatId] || Vue.set(state.chatsHistory,state.currentChatId,[])
-    history.splice(history.length, 1, {
-      msg : message,
-      time: new Date(),
-      self: true
-    })
-    // state.chat = [1001,1000]
+    // cnasdkasldjkasldjkasldjksajd
+    if(_.isEmpty(state.chatsHistory[state.currentChatId])){
+      Vue.set(state.chatsHistory,state.currentChatId,[])
+    }
+    let history = state.chatsHistory[state.currentChatId]
+    history.splice(history.length,1,{msg:message,time: new Date(),self:false})
   },
   newChat (state,chatId) {
     // 聊天对象切换
     let chat = state.chat
     _.remove(chat,chatId)
     chat.unshift(chatId)
+    // 视图切换
     state.currentChatId = chatId
     state.currentView = 'chat'
   },

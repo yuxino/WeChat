@@ -7,7 +7,7 @@
             TODO 时间算法
             TODO 缓存聊天记录
         -->
-        <div v-for="(item,index) of chatsHistory[currentChatId]" :key="index" class="message clearfix" :class="{self : item.self }">
+        <div v-for="(item,index) of historys" :key="index" class="message clearfix" :class="{self : item.self }">
           <img :src="item.self ? '/static/mine.png' : contact[currentChatId].avatar">
           <div class="bubble">{{item.msg}}</div>
         </div>
@@ -55,8 +55,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(['chat','contact','chatsHistory','currentChatId']),
-    ...mapGetters(['userName'])
+    ...mapState(['contact','currentChatId']),
+    ...mapGetters(['userName','historys'])
   },
   watch: {
     // 监视当前聊天对象的变更
@@ -70,6 +70,9 @@ export default {
         textarea.value = messageCache[this.currentChatId] || ''
         textarea.focus()
       })
+    },
+    history () {
+      console.log('[update]')
     }
   },
   methods: {
