@@ -8,7 +8,11 @@
           <div class="tip">
             好友
           </div>
-          <div class="item clearfix" :class="index === 0 ? 'active' : ''" v-for="(item,index) of result" :key="index">
+          <div class="item clearfix"
+               v-for="(item,contactId) of result"
+               :class="contactId === 0 ? 'active' : ''"
+               :key="contactId"
+               @click="_newChat(contactId)">
             <img class="avatar" :src="item.avatar">
             <div class="username">{{ item.remarks ? item.remarks : item.userName  }}</div>
           </div>
@@ -21,7 +25,7 @@
 <script>
 import _            from 'lodash'
 import pyfl         from '@/libs/pyfl'
-import { mapState } from 'vuex'
+import { mapState , mapMutations } from 'vuex'
 
 export default {
   name: 'SearchBar',
@@ -41,12 +45,23 @@ export default {
       let py = pyfl(keyword)
       const regex = new RegExp(py,'i')
       //查询出对应的联系人信息
-      return _.filter(this.contact , ({remarks , userName}) => regex.test(pyfl(remarks ? remarks : userName)))
+      let results = {}
+      _.filter(this.contact , ({remarks , userName},contactId) => {
+        let valid = regex.test(pyfl(remarks || userName))
+        valid && (results[contactId] = this.contact[contactId])
+        return valid
+      })
+      return results
     }
   },
   methods: {
+    ...mapMutations(['newChat']),
+    _newChat (contactId) {
+      this.newChat(contactId)
+      this.closeSearch()
+    },
     closeSearch: function(){ this.active = false },
-    search: _.debounce(function(e) { 
+    search: _.debounce(function(e) {
       this.keyword = e.target.value
      },200)
   }

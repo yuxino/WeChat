@@ -12,7 +12,7 @@
         <p v-if="currentContact.remarks"><label>备注 :   </label>{{ currentContact.remarks }}</p>
         <p v-if="currentContact.location"><label>地区 :   </label>{{ currentContact.location }}</p>
       </div>
-      <button class="contact-send-btn" @click="newChat">发消息</button>
+      <button class="contact-send-btn" @click="newChat(currentContactId)">发消息</button>
     </div>
     <div v-else class="contact-tip-wrapper">
       <i class="iconfont icons icon-yonghurenxiang contact-tip-icon"></i>
@@ -23,19 +23,17 @@
 
 <script>
 import ContactTitle from './Title'
-import { mapGetters } from 'vuex'
+import { mapState , mapGetters , mapMutations } from 'vuex'
 
 export default {
   name: 'ContactArea',
   components: { ContactTitle },
   computed: {
+    ...mapState(['currentContactId']),
     ...mapGetters(['currentContact'])
   },
   methods: {
-    // TODO 发起一个新会话
-    newChat () {
-
-    }
+    ...mapMutations(['newChat'])
   }
 }
 </script>

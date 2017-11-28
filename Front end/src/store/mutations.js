@@ -1,6 +1,8 @@
 import pyfl from '@/libs/pyfl/index'
 import Vue from 'Vue'
 
+var flag = true
+
 const mutations = {
   viewChange (state,viewName) {
     state.currentView = viewName
@@ -37,8 +39,13 @@ const mutations = {
     })
     // state.chat = [1001,1000]
   },
-  newChat () {
-    
+  newChat (state,chatId) {
+    // 聊天对象切换
+    let chat = state.chat
+    _.remove(chat,chatId)
+    chat.unshift(chatId)
+    state.currentChatId = chatId
+    state.currentView = 'chat'
   },
   // TODO 还没想好怎么做这里
   addContact: state => {
