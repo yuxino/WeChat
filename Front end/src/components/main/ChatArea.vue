@@ -61,18 +61,18 @@ export default {
   watch: {
     // 监视当前聊天对象的变更
     currentChatId () {
-      this.$nextTick(function(){
-        // 修正滚动条位置
-        let container = document.querySelector("#content")
-        container.scrollTop = container.scrollHeight
-        // 设置 textarea 内保存过的信息
-        let textarea = this.$el.querySelector('textarea')
-        textarea.value = messageCache[this.currentChatId] || ''
-        textarea.focus()
-      })
-    },
-    history () {
-      console.log('[update]')
+      // 只有id不为fasly的时候有效
+      if(this.currentChatId){
+        this.$nextTick(function(){
+          // 修正滚动条位置
+          let container = document.querySelector("#content")
+          container.scrollTop = container.scrollHeight
+          // 设置 textarea 内保存过的信息
+          let textarea = this.$el.querySelector('textarea')
+          textarea.value = messageCache[this.currentChatId] || ''
+          textarea.focus()
+        })
+      }
     }
   },
   methods: {

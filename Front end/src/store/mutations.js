@@ -1,7 +1,20 @@
-import pyfl from '@/libs/pyfl/index'
+import pyfl from '@/libs/pyfl'
 import Vue from 'Vue'
 
-var flag = true
+const topOnList = function(list,id) {
+  deleteOnList(list,id)
+  list.unshift(id)
+}
+
+const deleteOnList = function(list,id) {
+  for(let i = 0 ; i < list.length ; i++) {
+    if(list[i] === id) {
+      // 移除相等的值
+      list.splice(i, 1)
+      break
+    }
+  }
+}
 
 const mutations = {
   viewChange (state,viewName) {
@@ -27,29 +40,33 @@ const mutations = {
   },
   sendMessage (state , message) {
     // 将当前聊天对象置顶
-    let chat = state.chat
-    for(let index = 0 ; index < chat.length ; index++) {
-      if(chat[index] === state.currentChatId) {
-        chat.splice(index, 1)
-        chat.unshift(state.currentChatId)
-        break
-      }
-    }
-    // cnasdkasldjkasldjkasldjksajd
-    if(_.isEmpty(state.chatsHistory[state.currentChatId])){
-      Vue.set(state.chatsHistory,state.currentChatId,[])
-    }
+    topOnList(state.chat,state.currentChatId)
+    _.isEmpty(state.chatsHistory[state.currentChatId]) && Vue.set(state.chatsHistory,state.currentChatId,[])
     let history = state.chatsHistory[state.currentChatId]
-    history.splice(history.length,1,{msg:message,time: new Date(),self:false})
+    history.push({msg:message,time: new Date(),self:true})
+    
+    // 强行触发Getter更新
+    let id = state.currentChatId
+    state.currentChatId = 0
+    state.currentChatId = id
   },
   newChat (state,chatId) {
     // 聊天对象切换
-    let chat = state.chat
-    _.remove(chat,chatId)
-    chat.unshift(chatId)
+    topOnList(state.chat,chatId)
     // 视图切换
     state.currentChatId = chatId
     state.currentView = 'chat'
+  },
+  closeChat (state,chatId) {
+    deleteOnList(state.chat,chatId)
+    Vue.delete(state.chatsHistory,chatId)
+    state.currentChatId = void 0    
+    state.menuStatus = false
+  },
+  clearHistory (state,chatId) {
+    Vue.delete(state.chatsHistory,chatId)
+    // close Menu
+    state.menuStatus = false
   },
   // TODO 还没想好怎么做这里
   addContact: state => {

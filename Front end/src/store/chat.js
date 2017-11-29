@@ -1,4 +1,4 @@
 // temp data
-const chat = []
+const chat = ['1000','1001']
 
 export default chat
