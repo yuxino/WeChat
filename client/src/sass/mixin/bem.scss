@@ -1,0 +1,106 @@
+// https://github.com/ElementUI/theme-chalk/blob/master/src/mixins/mixins.scss
+$namespace: 'wx';
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: 'is-';
+
+// https://github.com/ElementUI/theme-chalk/blob/master/src/mixins/function.scss
+/* BEM support Func
+ -------------------------- */
+ @function selectorToString($selector) {
+  $selector: inspect($selector);
+  $selector: str-slice($selector, 2, -2);
+  @return $selector;
+}
+
+@function containsModifier($selector) {
+  $selector: selectorToString($selector);
+
+  @if str-index($selector, $modifier-separator) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function containWhenFlag($selector) {
+  $selector: selectorToString($selector);
+
+  @if str-index($selector, '.' + $state-prefix) {
+    @return true
+  } @else {
+    @return false
+  }
+}
+
+@function containPseudoClass($selector) {
+  $selector: selectorToString($selector);
+
+  @if str-index($selector, ':') {
+    @return true
+  } @else {
+    @return false
+  }
+}
+
+@function hitAllSpecialNestRule($selector) {
+
+  @return containsModifier($selector) or containWhenFlag($selector) or containPseudoClass($selector);
+}
+
+/* BEM
+ -------------------------- */
+ @mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}

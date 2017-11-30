@@ -1,7 +1,7 @@
 <template>
-  <div class="list">
-    <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="items" v-for="(item,index) of items" :key="index" @click="subjectChange(index)">
+  <div class="wx-subject-list">
+    <div class="wx-subject-list__et" v-if="itemsEmpty">{{emptyMsg}}</div>
+    <div class="wx-subject-list__item" v-for="(item,index) of items" :key="index" @click="subjectChange(index)">
     </div>
   </div>
 </template>
@@ -31,19 +31,26 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-  .list
-    position: absolute
-    top: 149px
-    bottom: 0px
-    left: 0
-    right: 0
-    overflow: auto
-    overflow-y: auto
-    
-  .emptyPlaceHolder
-    margin: 30px auto
-    text-align: center
-    color: #6b6f7c
-    font-size: 14px
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
+
+  @include b(subject-list){
+    position: absolute;
+    top: 149px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    overflow-y: auto;
+    @include e(et){
+      margin: 30px auto;
+      text-align: center;
+      color: $--subject-list-et-color;
+      font-size: 14px;
+    }
+    @include e(item){
+
+    }
+  }
 </style>

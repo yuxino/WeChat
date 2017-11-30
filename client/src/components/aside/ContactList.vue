@@ -1,86 +1,94 @@
 <template>
-  <div class="list">
-    <div class="emptyPlaceHolder" v-if="itemsEmpty">{{emptyMsg}}</div>
+  <div class="wx-contact-list">
+    <div class="wx-contact-list__tips" v-if="itemsEmpty">{{emptyMsg}}</div>
     <div v-for="(contacts,group) of contactList" :key="group">
-      <h4 class="contact-group-title">{{ group }}</h4>
-      <div class="contact-item clearfix" v-for="(item,contactId) of contacts"
-                                         :class="{active : contactId == currentContactId}" 
+      <h4 class="wx-contact-list__group-title">{{ group }}</h4>
+      <div class="wx-contact-list__item clearfix" v-for="(item,contactId) of contacts"
+                                         :class="{'is-active' : contactId == currentContactId}" 
                                          @click="contactChange(contactId)"
                                          :key="contactId">
-        <img :src="item.avatar" class="contact-avatar">
-        <div class="contact-name">{{ item.remarks ? item.remarks : item.userName }}</div>
+        <img class="wx-contact-list__item__avatar" :src="item.avatar">
+        <div class="wx-contact-list__item__name">{{item.remarks ? item.remarks : item.userName}}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapState, mapGetters, mapMutations } from 'vuex'
-
 export default {
   name: 'ContactList',
   data () {
     return {
-      emptyMsg: '咦 你一个联系人都没有...',
-      items: []
+      emptyMsg: '咦 你一个联系人都没有...'
     }
-  },
-  methods: {
-    ...mapMutations(['contactChange'])
   },
   computed: {
     ...mapState(['currentContactId']),
     ...mapGetters(['contactList']),
     itemsEmpty () {
-      return this.contactList.length === 0
+      return _.isEmpty(this.contactList)
     }
+  },
+  methods: {
+    ...mapMutations(['contactChange'])
   }
 }
 </script>
 
-<style lang="sass" scoped>
-  .list
-    position: absolute
-    top: 149px
-    bottom: 0px
-    left: 0
-    right: 0
-    overflow: auto
-    overflow-y: auto
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
 
-  .emptyPlaceHolder
-    margin: 30px auto
-    text-align: center
-    color: #6b6f7c
-    font-size: 14px
+  @include b(contact-list){
+    position: absolute;
+    top: 149px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    overflow-y: auto;
 
-  .contact-group-title
-    margin: 0
-    padding: 5px 18px
-    font-weight: 400
-    background: #292d32
-    color: #787b87
-    font-size: 14px
+    @include e(tips){
+      margin: 30px auto;
+      text-align: center;
+      color: $--contact-list-tips-color;
+      font-size: 14px;
+    }
 
-  .contact-item
-    padding: 10px 18px 9px
-    color: white
-    cursor: pointer
+    @include e(group-title){
+      margin: 0;
+      padding: 5px 18px;
+      font-weight: 400;
+      color: $--contact-list-group-title-color;
+      background: $--contact-list-group-title-background;
+      font-size: 14px;
+    }
 
-  .contact-item + .contact-item
-    border-top: 1px solid #292c33
-  
-  .contact-name
-    line-height: 30px
-    font-size: 13px
-    overflow: hidden
+    @include e(item){
+      padding: 10px 18px 9px;
+      color: $--contact-list-item-color;
+      cursor: pointer;
+      + .wx-contact-list__item {
+        border-top: 1px solid $--contact-list-item-border;
+      }
+      @include when(active){
+        background: $--contact-list-item-active-color;
+      }
+    }
 
-  .contact-avatar
-    width: 30px
-    height: 30px
-    float: left
-    margin-right: 7px
+    @include e(item__avatar){
+      width: 30px;
+      height: 30px;
+      float: left;
+      margin-right: 7px;
+    }
 
-  .active
-    background: #3b4047
+    @include e(item__name){
+      line-height: 30px;
+      font-size: 13px;
+      overflow: hidden;
+    }
+  }
 </style>

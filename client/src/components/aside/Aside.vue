@@ -1,9 +1,9 @@
 <template>
-  <div class="aside clearfix">
-      <aside-header></aside-header>
-      <keep-alive>
-          <component :is="viewName"></component>
-      </keep-alive>
+  <div class="wx-aside clearfix">
+    <aside-header></aside-header>
+    <keep-alive>
+      <component :is="viewName"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -15,7 +15,6 @@ import ChatList from './ChatList'
 import SubjectList from './SubjectList'
 import ContactList from './ContactList'
 import viewConfig from '@/config/viewConfig'
-
 export default {
   name: 'Aside',
   components: { AsideHeader, ChatList, SubjectList, ContactList },
@@ -28,11 +27,15 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-    .aside
-      float: left
-      position: relative
-      width: 280px
-      height: 100%
-      background-color: #2e3238
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
+
+  @include b(aside){
+    float: left;
+    position: relative;
+    width: 280px;
+    height: 100%;
+    background-color: $--aisde-color;
+  }
 </style>

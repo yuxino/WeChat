@@ -1,24 +1,27 @@
 <template>
-  <div class="header">
-      <my-info></my-info>
-      <search-bar></search-bar>
-      <tab></tab>
+  <div class="wx-aside-header">
+    <profile></profile>
+    <search></search>
+    <tab></tab>
   </div>
 </template>
 
 <script>
-import MyInfo from './MyInfo'
-import SearchBar from './SearchBar'
+import Profile from './Profile'
+import Search from './Search'
 import Tab from './Tab'
-
 export default {
   name: 'Header',
-  components: { MyInfo, Tab, SearchBar }
+  components: { Profile, Tab, Search }
 }
 </script>
 
-<style lang="sass" scoped>
-    .header 
-        color: white
-        border-bottom: 1px solid #24272c
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
+
+  @include b(aside-header){
+    color: $--aside-header-color;
+    border-bottom: 1px solid $--aside-header-border;
+  }
 </style>

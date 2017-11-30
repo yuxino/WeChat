@@ -1,8 +1,8 @@
 <template>
-    <div class="tab">
-        <div class="icon" v-for="({iconName,viewName},index) of views" :key="index" @click="viewChange(viewName)">          
-          <i class='iconfont icons':class="[iconName,{active : viewName === currentView}]"></i>
-        </div>
+    <div class="wx-aside-tab clearfix">
+      <div class="wx-aside-tab-container" v-for="({iconName,viewName},index) of views" :key="index" @click="viewChange(viewName)">          
+        <i class='iconfont wx-aside-tab-container__icons':class="[iconName,{'is-active' : viewName === currentView}]"></i>
+      </div>
     </div>
 </template>
 
@@ -36,36 +36,33 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
 
-<style lang="sass" scoped>
-  .tab
-    overflow: hidden
-    &:after
-      content: ""
-      display: block
-      height: 0;
-      clear: both
-      visibility: hidden 
+  @include b(wx-aside-tab){
+    overflow: hidden;
+  }
 
-  .tab > div > i
-    font-size: 24px
-
-  .icon
-    display: inline-block
-    width: 33%
-    padding: 6px 0
-    text-align: center
-    box-sizing: border-box
-    cursor: pointer
-
-  .icons.active 
-    color: #3caf36
-
-  .icons
-    width: 100%
-    display: block
-    font-size: 22px
-
-  .icon + .icon > .icons
-    border-left: 1px solid #24272c
+  @include b(aside-tab-container){
+    display: inline-block;
+    width: 33%;
+    padding: 6px 0;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    @include e(icons){
+      width: 100%;
+      display: block;
+      font-size: 22px;
+      @include when(active){
+        color: $--aside-tab-container-icons-active;
+      }
+    }
+  }
+  
+  // 每个图标之间的分割线 (但觉得写的不是很好
+  .wx-aside-tab-container + .wx-aside-tab-container > .wx-aside-tab-container__icons{
+    border-left: 1px solid  $--aside-tab-container__icons-border;
+  }
 </style>
