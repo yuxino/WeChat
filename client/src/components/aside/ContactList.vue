@@ -1,6 +1,6 @@
 <template>
   <div class="wx-contact-list">
-    <div class="wx-contact-list__tips" v-if="itemsEmpty">{{emptyMsg}}</div>
+    <div class="wx-contact-list__tips" v-if="isEmpty">{{emptyTips}}</div>
     <div v-for="(contacts,group) of contactList" :key="group">
       <h4 class="wx-contact-list__group-title">{{ group }}</h4>
       <div class="wx-contact-list__item clearfix" v-for="(item,contactId) of contacts"
@@ -21,13 +21,13 @@ export default {
   name: 'ContactList',
   data () {
     return {
-      emptyMsg: '咦 你一个联系人都没有...'
+      emptyTips: '咦 你一个联系人都没有...'
     }
   },
   computed: {
     ...mapState(['currentContactId']),
     ...mapGetters(['contactList']),
-    itemsEmpty () {
+    isEmpty () {
       return _.isEmpty(this.contactList)
     }
   },

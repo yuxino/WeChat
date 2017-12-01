@@ -15,6 +15,7 @@ const sortByKey = collection => {
   return _(collection).toPairs().sortBy(0).fromPairs().value()
 }
 
+// 格式化时间
 const formatTime = date => {
   let hour = `${date.getHours()}`.padStart(2, '0')
   let minutes = `${date.getMinutes()}`.padStart(2, '0')
@@ -57,8 +58,8 @@ const getters = {
     // TODO 这是一个可优化的选项
     return sortByKey(contacts)
   },
-  userName: state => {
-    return state.currentChatId ? state.contact[state.currentChatId].userName : ''
+  currentChat: state => {
+    return state.contact[state.currentChatId] ? state.contact[state.currentChatId] : ''
   },
   currentContact: state => {
     return state.currentContactId ? state.contact[state.currentContactId] : ''

@@ -1,5 +1,5 @@
 <template>
-  <li class="menu-item">
+  <li class="wx-menu-item">
     <slot></slot>
   </li>
 </template>
@@ -10,13 +10,18 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-  .menu-item
-    padding: 8px
-    line-height: 1.6
-    font-size: 14px
-    cursor: pointer
-    border-bottom: 1px solid #f1f1f1
-    &:hover
-        background-color: #f5f5f5
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
+
+  @include b(menu-item){
+    padding: 8px;
+    line-height: 1.6;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid $--menu-item-border;
+    &:hover{
+      background: $--menu-item-hover-background;
+    }
+  }
 </style>

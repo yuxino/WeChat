@@ -1,5 +1,5 @@
 <template>
-    <p class="copyright">© 1998 - 2017 Tencent Inc. All Rights Reserved 帮助</p>
+    <p class="wx-copyright">© 1998 - 2017 Tencent Inc. All Rights Reserved 帮助</p>
 </template>
 
 <script>
@@ -8,9 +8,11 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
 
-<style lang="sass" scoped>
-  .copyright
+  @include b(copyright){
     margin: 0;
     left: 0;
     right: 0;
@@ -18,9 +20,12 @@ export default {
     bottom: 30px;
     text-align: center;
     font-size: 12px;
-    color: #e3e3e3;
+    color: $--copyright-color;
+  }
 
-  @media (max-height: 800px) 
-    p
-    display: none
+  @media (max-height: 800px){
+    .wx-copyright {
+     display: none
+    }
+  }
 </style>

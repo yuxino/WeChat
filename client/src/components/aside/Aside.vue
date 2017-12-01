@@ -7,7 +7,6 @@
   </div>
 </template>
 
-
 <script>
 import { mapState } from 'vuex'
 import AsideHeader from './header'
@@ -20,6 +19,7 @@ export default {
   components: { AsideHeader, ChatList, SubjectList, ContactList },
   computed: {
     ...mapState(['currentView']),
+    // 根据state里面的currentView切换视图
     viewName () {
       return viewConfig[this.currentView]['aside']
     }

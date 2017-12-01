@@ -1,5 +1,5 @@
 <template>
-  <ul class="menu" :style="position">
+  <ul class="wx-menu" :style="position">
     <slot></slot>
   </ul>
 </template>
@@ -16,16 +16,20 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-  .menu
-    display: inline-block
-    position: absolute
-    min-width: 125px
-    padding: 0
-    margin: 0
-    list-style: none
-    background: white
-    border: 1px solid #d6d6d6
-    border-radius: 4px
-    box-shadow: 2px 3px 10px rgba(0,0,0,.1)
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
+
+  @include b(menu){
+    display: inline-block;
+    position: absolute;
+    min-width: 125px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-radius: 4px;
+    border: 1px solid $--menu-border;
+    background: $--menu-background;
+    box-shadow: 2px 3px 10px $--menu-box-shadow;
+  }
 </style>

@@ -4,8 +4,7 @@
     <input type="text" class="wx-search__input"
                        placeholder="搜索"
                        spellcheck="false"
-                       @input="search"
-                       @blur="closeSearch">
+                       @input="search">
     <div class="wx-search-container" v-show="show">
       <div v-if="isEmpty" class="wx-search-container__et">找不到匹配的结果</div>
       <div v-else class="wx-search-result">
@@ -34,6 +33,7 @@ export default {
   name: 'Search',
   data () {
     return {
+      // 是否显示搜索结果框
       show: false,
       keyword: ''
     }
@@ -47,10 +47,11 @@ export default {
         this.show = false
         return
       }
+      // 不爲空顯示搜索結果框
       this.show = true
+      // 查询出对应的联系人信息
       let py = pyfl(keyword)
       const regex = new RegExp(py, 'i')
-      // 查询出对应的联系人信息
       let results = {}
       _.filter(this.contact, ({remarks, userName}, contactId) => {
         let valid = regex.test(pyfl(remarks || userName))
@@ -109,7 +110,7 @@ export default {
 
   @include b(search-container){
     position: absolute;
-    z-index: 99;
+    z-index: 99999;
     top: 41px;
     left: 18px;
     right: 18px;

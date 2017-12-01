@@ -1,9 +1,9 @@
 <template>
-    <div class="wx-aside-tab clearfix">
-      <div class="wx-aside-tab-container" v-for="({iconName,viewName},index) of views" :key="index" @click="viewChange(viewName)">          
-        <i class='iconfont wx-aside-tab-container__icons':class="[iconName,{'is-active' : viewName === currentView}]"></i>
-      </div>
+  <div class="wx-aside-tab clearfix">
+    <div class="wx-aside-tab-container" v-for="({iconName,viewName},index) of views" :key="index" @click="viewChange(viewName)">          
+      <i class='iconfont wx-aside-tab-container__icons':class="[iconName,{'is-active' : viewName === currentView}]"></i>
     </div>
+  </div>
 </template>
 
 <script>

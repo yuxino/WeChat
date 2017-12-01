@@ -1,9 +1,30 @@
 /**
+ * App
+ */
+$--webkit-scrollbar-thumb-color: #6f6f6f;
+
+/**
  * Aside
  */
 $--aisde-color: #2e3238;
 $--aside-header-color: #ffffff;
 $--aside-header-border: #24272c;
+
+/**
+ * Main
+ */
+$--main-background: #eeeeee;
+$--main-title-color: #000000;
+$--main-title-border: #d6d6d6;
+
+/**
+ * Menu
+ */
+$--menu-border: #d6d6d6;
+$--menu-background: #ffffff;
+$--menu-box-shadow: rgba(0,0,0,.1);
+$--menu-item-border: #f1f1f1;
+$--menu-item-hover-background: #f5f5f5;
 
 /**
  * Chat List
@@ -14,8 +35,10 @@ $--chat-list-item-hover-background: #3a3f45;
 $--chat-list-item-active-color: #ffffff;
 $--chat-list-item-active-background: #3a3f45;
 $--chat-list-item-info-color: #989898;
-$--contact-list-tips-color: #6b6f7c;
 $--chat-list-username-color:#ffffff;
+$--chat-list-info-username-color: #ffffff;
+$--chat-list-info-time-color: #6b6f7c;
+$--chat-list-info-lastMsg-color: #989898;
 
 /**
  * Profile
@@ -28,7 +51,6 @@ $--chat-list-username-color:#ffffff;
   */
  $--aside-tab-container-icons-active: #3caf36;
  $--aside-tab-container__icons-border: #24272c;
-
  
  /**
   * Search
@@ -46,7 +68,6 @@ $--chat-list-username-color:#ffffff;
  $--search-result-item-background: #393c43;
  $--search-result-item-first-background: #595b64;
 
-
 /**
  * Subject List
  */
@@ -61,6 +82,37 @@ $--contact-list-group-title-background: #292d32;
 $--contact-list-item-color: #ffffff;
 $--contact-list-item-border: #292c33;
 $--contact-list-item-active-color: #3b4047;
-$--chat-list-info-username-color: #ffffff;
-$--chat-list-info-time-color: #6b6f7c;
-$--chat-list-info-lastMsg-color: #989898;
+$--contact-list-tips-color: #6b6f7c;
+
+/**
+ * ChatArea
+ */
+$--chatArea-content-time-color: #b2b2b2;
+$--chatArea-message-bubble-color: #ffffff;
+$--chatArea-message-bubble-after-border: #ffffff;
+$--chatArea-message-bubble-self-color: #b2e281;
+$--chatArea-message-bubble-self-after-border: #b2e281;
+$--chatArea-messageArea-border: #d6d6d6;
+$--chatArea-messageArea-btn-container-describe-color: #888888;
+$--chatArea-messageArea-btn-container-send-color: #ffffff;
+$--chatArea-messageArea-btn-container-send-background: #222;
+$--chatArea-messageArea-btn-container-send-border: #c1c1c1;
+$--chatArea-tip-wrapper-icon-color: #e2e2e2;
+$--chatArea-tip-wrapper-tip-color: #cccccc;
+
+/**
+ * ContactArea
+ */
+$--contactArea-icon-male-color: #5da7ca;
+$--contactArea-icon-female-color: #dd6665;
+$--contactArea-bio-color: #888888;
+$--contactArea-another-info-color: #888888;
+$--contactArea-newChat-btn-color: #ffffff;
+$--contactArea-newChat-btn-background: #42ac3e;
+$--contactArea-tip-wrapper-color: #f0f0f0;
+$--contactArea-tip-wrapper-background: #e0e0e0;
+
+/**
+ * CopyRight
+ */
+$--copyright-color: #e3e3e3;

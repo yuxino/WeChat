@@ -1,6 +1,6 @@
 <template>
   <keep-alive>
-    <component class="main" :is="viewName"></component>
+    <component class="wx-main" :is="viewName"></component>
   </keep-alive>
 </template>
 
@@ -13,21 +13,25 @@ import viewConfig from '@/config/viewConfig'
 
 export default {
   name: 'Main',
+  components: { ChatArea, SubjectArea, ContactArea },
   computed: {
     ...mapState(['currentView']),
     viewName () {
       return viewConfig[this.currentView]['main']
     }
-  },
-  components: { ChatArea, SubjectArea, ContactArea }
+  }
 }
 </script>
 
 
-<style lang="sass" scoped>
-  .main
-    position: relative
-    height: 100%
-    overflow: hidden
-    background-color: #eee
+<style lang="scss">
+  @import '~@/sass/mixin/bem';
+  @import '~@/sass/common/var';
+
+  @include b(main){
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: $--main-background;
+  }
 </style>

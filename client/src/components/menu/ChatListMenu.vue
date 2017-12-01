@@ -5,9 +5,7 @@
   </wx-menu>
 </template>
 
-
 <!--TODO 获取到正确的id-->
-
 <script>
 import WxMenu from './Menu'
 import WxMenuItem from './MenuItem'

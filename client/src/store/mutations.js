@@ -1,11 +1,12 @@
 import Vue from 'Vue'
 import _ from 'lodash'
 
+// 置顶列表里面和id相等的一项
 const topOnList = function (list, id) {
   deleteOnList(list, id)
   list.unshift(id)
 }
-
+// 删除里面对应的id
 const deleteOnList = function (list, id) {
   for (let i = 0; i < list.length; i++) {
     if (list[i] === id) {
@@ -15,7 +16,6 @@ const deleteOnList = function (list, id) {
     }
   }
 }
-
 const mutations = {
   viewChange (state, viewName) {
     state.currentView = viewName

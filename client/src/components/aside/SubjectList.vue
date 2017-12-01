@@ -1,31 +1,34 @@
 <template>
   <div class="wx-subject-list">
-    <div class="wx-subject-list__et" v-if="itemsEmpty">{{emptyMsg}}</div>
-    <div class="wx-subject-list__item" v-for="(item,index) of items" :key="index" @click="subjectChange(index)">
+    <div class="wx-subject-list__et" v-if="isEmpty">{{emptyTips}}</div>
+    <div class="wx-subject-list__item" v-for="(item,subjectId) of items"
+                                       :key="subjectId"
+                                       @click="subjectChange(subjectId)">
     </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash'
 import { mapState } from 'vuex'
 
 export default {
   name: 'SubjectList',
   data () {
     return {
-      emptyMsg: '暂无文章...',
+      emptyTips: '暂无文章...',
       items: []
     }
   },
   methods: {
-    subjectChange (index) {
-      this.$store.commit('subjectChange', index)
+    subjectChange (subjectId) {
+      this.$store.commit('subjectChange', subjectId)
     }
   },
   computed: {
     ...mapState(['currentSubject', 'subject']),
-    itemsEmpty () {
-      return this.items.length === 0
+    isEmpty () {
+      return _.isEmpty(this.items)
     }
   }
 }

@@ -2,13 +2,13 @@
   <div class="wx-chat">
     <div class="wx-chat-list__tips" v-if="itemsEmpty">{{tips}}</div>
     <div class="wx-chat-list__item" v-for="(item,chatId) of chatList" 
-                        :key="chatId.substr(1)"
-                        :class="{ 'is-active' : chatId.substr(1) === currentChatId }"
+                        :key="_chatId(chatId)"
+                        :class="{ 'is-active' : _chatId(chatId) === currentChatId }"
                         @contextmenu.prevent="showMenu({$event,menuName})"
-                        @click="chatChange(chatId.substr(1))">
+                        @click="chatChange(_chatId(chatId))">
       <img class="wx-chat-list__avatar" :src="item.avatar" alt="头像">
       <div class="wx-chat-list-info">
-        <span class="wx-chat-list__username">
+        <span class="wx-chat-list-info__username">
             {{ item.remarks || item.userName }}
           <span class="wx-chat-list-info__time">
             {{ item.time }}
@@ -30,8 +30,7 @@ export default {
   data () {
     return {
       tips: '哇呜好可怜没有人和你交流...',
-      menuName: 'ChatListMenu',
-      menuShow: false
+      menuName: 'ChatListMenu'
     }
   },
   computed: {
@@ -42,7 +41,13 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['showMenu', 'chatChange'])
+    ...mapMutations(['showMenu', 'chatChange']),
+    // 删掉id前面的'_' 设置'_'的原因具体可以看getter.js里面的做法
+    // 加_的原因是因为chrome和一些浏览器会对对象自动排序
+    // 这里依赖了对象的id，并且这个id是数字,排序的结果会导致乱掉
+    _chatId (chatId) {
+      return chatId.substr(1)
+    }
   }
 }
 </script>
