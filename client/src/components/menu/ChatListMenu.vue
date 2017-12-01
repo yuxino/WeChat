@@ -1,7 +1,7 @@
 <template>
   <wx-menu :position="position">
     <wx-menu-item @click.native="topChat">置顶</wx-menu-item>
-    <wx-menu-item @click.native="closeChat(currentChatId)">关闭聊天</wx-menu-item>
+    <wx-menu-item @click.native="closeChat">关闭聊天</wx-menu-item>
   </wx-menu>
 </template>
 

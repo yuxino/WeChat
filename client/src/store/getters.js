@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import pyfl from '@/libs/pyfl/index.js'
+import pyfl from 'pyfl'
 
 // 获取拼音首字母
 // 如果有且为[a-zA-Z]範圍内的字符则返回小写的字母

@@ -4,7 +4,7 @@
     <div class="wx-chat-list__item" v-for="(item,chatId) of chatList" 
                         :key="_chatId(chatId)"
                         :class="{ 'is-active' : _chatId(chatId) === currentChatId }"
-                        @contextmenu.prevent="showMenu({$event,menuName})"
+                        @contextmenu.prevent="showMenu({$event,chatId,menuName})"
                         @click="chatChange(_chatId(chatId))">
       <img class="wx-chat-list__avatar" :src="item.avatar" alt="头像">
       <div class="wx-chat-list-info">

@@ -26,7 +26,7 @@
 
 <script>
 import _ from 'lodash'
-import pyfl from '@/libs/pyfl'
+import pyfl from 'pyfl'
 import { mapState, mapMutations } from 'vuex'
 
 export default {

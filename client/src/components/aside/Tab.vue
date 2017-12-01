@@ -47,7 +47,7 @@ export default {
   @include b(aside-tab-container){
     display: inline-block;
     width: 33%;
-    padding: 6px 0;
+    padding: 8px 0;
     text-align: center;
     box-sizing: border-box;
     cursor: pointer;

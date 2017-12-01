@@ -29,11 +29,12 @@ const mutations = {
   contactChange (state, contactId) {
     state.currentContactId = contactId
   },
-  showMenu (state, {$event, menuName}) {
+  showMenu (state, {$event, chatId, menuName}) {
     let e = event
     state.menuStatus = true
     state.currentMenu = menuName
     state.position = { top: `${e.clientY}px`, left: `${e.clientX}px` }
+    state.menuChatId = chatId.substr(1)
   },
   closeMenu (state) {
     state.menuStatus = false
@@ -57,9 +58,10 @@ const mutations = {
     state.currentChatId = chatId
     state.currentView = 'chat'
   },
-  closeChat (state, chatId) {
-    deleteOnList(state.chat, chatId)
-    Vue.delete(state.chatsHistory, chatId)
+  closeChat (state) {
+    deleteOnList(state.chat, state.menuChatId)
+    // clear history
+    Vue.delete(state.chatsHistory, state.menuChatId)
     state.currentChatId = void 0
     state.menuStatus = false
   },

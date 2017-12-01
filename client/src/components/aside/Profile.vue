@@ -23,6 +23,7 @@ export default {
       vertical-align: middle;
       width: 40px;
       height: 40px;
+      cursor: pointer;
     }
     @include e(username){
     display: inline-block;

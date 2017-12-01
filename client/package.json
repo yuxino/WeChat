@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "pyfl": "^1.0.0",
     "vue": "^2.5.2",
     "vuex": "^2.5.0"
   },
