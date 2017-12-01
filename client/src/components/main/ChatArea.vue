@@ -14,7 +14,7 @@
     </div>
     <div v-if="currentChatId" class="wx-chatArea-messageArea">
         <div class="wx-chatArea-messageArea__bar">
-          <i class="iconfont icon-face ccc"></i>
+          <i class="wx-chatArea-messageArea__icon iconfont icon-face"></i>
         </div>
         <div class="wx-chatArea-messageArea-text-box">
           <div class="wx-chatArea-messageArea-text-box__wrapper">
@@ -106,7 +106,7 @@ export default {
     top: 52px;
     left: 0;
     right: 0;
-    bottom: 200px;
+    bottom: 190px;
     padding: 0 20px;
     overflow: auto;
     @include e(time){
@@ -175,7 +175,7 @@ export default {
   }
 
   @include b(chatArea-messageArea){
-    min-height: 200px;
+    min-height: 190px;
     position: absolute;
     margin-right: 19px;
     border-top: 1px solid $--chatArea-messageArea-border;
@@ -185,6 +185,9 @@ export default {
     @include e(bar){
       line-height: 30px;
       padding: 5px 17px;
+    }
+    @include e(icon){
+      font-size: 18px;
     }
   }
 
