@@ -5,8 +5,7 @@ $modifier-separator: '--';
 $state-prefix: 'is-';
 
 // https://github.com/ElementUI/theme-chalk/blob/master/src/mixins/function.scss
-/* BEM support Func
- -------------------------- */
+// BEM support Func
  @function selectorToString($selector) {
   $selector: inspect($selector);
   $selector: str-slice($selector, 2, -2);
@@ -48,8 +47,7 @@ $state-prefix: 'is-';
   @return containsModifier($selector) or containWhenFlag($selector) or containPseudoClass($selector);
 }
 
-/* BEM
- -------------------------- */
+// BEM
  @mixin b($block) {
   $B: $namespace+'-'+$block !global;
 

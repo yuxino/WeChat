@@ -1,34 +1,24 @@
-/**
- * App
- */
+// App
 $--webkit-scrollbar-thumb-color: #6f6f6f;
 
-/**
- * Aside
- */
+// Aside
 $--aisde-color: #2e3238;
 $--aside-header-color: #ffffff;
 $--aside-header-border: #24272c;
 
-/**
- * Main
- */
+// Main
 $--main-background: #eeeeee;
 $--main-title-color: #000000;
 $--main-title-border: #d6d6d6;
 
-/**
- * Menu
- */
+// Menu
 $--menu-border: #d6d6d6;
 $--menu-background: #ffffff;
 $--menu-box-shadow: rgba(0,0,0,.1);
 $--menu-item-border: #f1f1f1;
 $--menu-item-hover-background: #f5f5f5;
 
-/**
- * Chat List
- */
+// ChatList
 $--chat-list-tips-color: #6b6f7c;
 $--chat-list-item-hover-color: #ffffff;
 $--chat-list-item-hover-background: #3a3f45;
@@ -40,21 +30,15 @@ $--chat-list-info-username-color: #ffffff;
 $--chat-list-info-time-color: #6b6f7c;
 $--chat-list-info-lastMsg-color: #989898;
 
-/**
- * Profile
- */
+// Profile
  $--profile-username-color: #ffffff;
  $--profile-menu-color: #777777;
  
- /**
-  * Tab
-  */
+// Tab
  $--aside-tab-container-icons-active: #3caf36;
  $--aside-tab-container__icons-border: #24272c;
  
- /**
-  * Search
-  */
+// Search
  $--search-icon-color: #808285;
  $--search-input-color: #ffffff;
  $--search-input-background: #26292e;
@@ -68,14 +52,10 @@ $--chat-list-info-lastMsg-color: #989898;
  $--search-result-item-background: #393c43;
  $--search-result-item-first-background: #595b64;
 
-/**
- * Subject List
- */
+// Subject List
 $--subject-list-et-color: #6b6f7c;
 
-/**
- * Contact List
- */
+// Contact List
 $--contact-list-tips-color: #6b6f7c;
 $--contact-list-group-title-color: #787b87;
 $--contact-list-group-title-background: #292d32;
@@ -84,9 +64,7 @@ $--contact-list-item-border: #292c33;
 $--contact-list-item-active-color: #3b4047;
 $--contact-list-tips-color: #6b6f7c;
 
-/**
- * ChatArea
- */
+// ChatArea
 $--chatArea-content-time-color: #b2b2b2;
 $--chatArea-message-bubble-color: #ffffff;
 $--chatArea-message-bubble-after-border: #ffffff;
@@ -100,9 +78,7 @@ $--chatArea-messageArea-btn-container-send-border: #c1c1c1;
 $--chatArea-tip-wrapper-icon-color: #e2e2e2;
 $--chatArea-tip-wrapper-tip-color: #cccccc;
 
-/**
- * ContactArea
- */
+// ContactArea
 $--contactArea-icon-male-color: #5da7ca;
 $--contactArea-icon-female-color: #dd6665;
 $--contactArea-bio-color: #888888;
@@ -112,7 +88,5 @@ $--contactArea-newChat-btn-background: #42ac3e;
 $--contactArea-tip-wrapper-color: #f0f0f0;
 $--contactArea-tip-wrapper-background: #e0e0e0;
 
-/**
- * CopyRight
- */
+// CopyRight
 $--copyright-color: #e3e3e3;
