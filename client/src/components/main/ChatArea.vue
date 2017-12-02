@@ -1,6 +1,6 @@
 <template>
   <div>
-    <chat-title>{{currentChat.userName}}</chat-title>
+    <chat-title>{{ currentChat.remarks || currentChat.userName}}</chat-title>
     <div v-if="currentChatId" class="wx-chatArea-content" @contextmenu.prevent="showMenu({$event,menuName})">
       <p class="wx-chatArea-content__time">11:23</p>
       <!--遍历聊天记录
