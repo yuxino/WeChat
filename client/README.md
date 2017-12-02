@@ -1,4 +1,4 @@
-# client
+# WeChat
 
 > A Vue.js project
 
