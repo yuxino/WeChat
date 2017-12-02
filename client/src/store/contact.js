@@ -2,7 +2,7 @@
 const contact = {
   '1000': {
     userName: 'Charlotte',
-    avatar: '/static/av1.jpg',
+    avatar: './static/av1.jpg',
     bio: 'Most men die at 27， we just bury them at 72.',
     sex: 'female',
     remarks: '',
@@ -10,7 +10,7 @@ const contact = {
   },
   '1001': {
     userName: '大象',
-    avatar: '/static/av2.jpg',
+    avatar: './static/av2.jpg',
     bio: '果然还是太傻了。',
     sex: 'male',
     remarks: '',
@@ -18,7 +18,7 @@ const contact = {
   },
   '1002': {
     userName: '叫我爸爸',
-    avatar: '/static/av3.jpg',
+    avatar: './static/av3.jpg',
     bio: '螃蟹在剥我的壳，笔记本在写我，漫天的我落在雪花上。',
     sex: 'male',
     remarks: '土鳖',
@@ -26,7 +26,7 @@ const contact = {
   },
   '1003': {
     userName: '我他妈社保',
-    avatar: '/static/av4.jpg',
+    avatar: './static/av4.jpg',
     bio: '其实我很乖',
     sex: 'male',
     remarks: '蛾子',
@@ -34,7 +34,7 @@ const contact = {
   },
   '1004': {
     userName: '蒟蒻',
-    avatar: '/static/av5.jpg',
+    avatar: './static/av5.jpg',
     bio: '观察大佬的操作',
     sex: 'male',
     remarks: 'Nbsaw',
@@ -42,7 +42,7 @@ const contact = {
   },
   '1005': {
     userName: 'zhihao',
-    avatar: '/static/av6.jpg',
+    avatar: './static/av6.jpg',
     bio: '',
     sex: 'female',
     remarks: '',
@@ -50,7 +50,7 @@ const contact = {
   },
   '1006': {
     userName: 'Z.',
-    avatar: '/static/av7.jpg',
+    avatar: './static/av7.jpg',
     bio: '慢热 ！',
     sex: 'male',
     remarks: '张尻乐',

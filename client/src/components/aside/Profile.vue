@@ -1,6 +1,6 @@
 <template>
     <div class="wx-profile clearfix">
-      <img class="wx-profile__avatar" src="/static/mine.png" alt="">
+      <img class="wx-profile__avatar" src="static/mine.png" alt="">
       <span class="wx-profile__username">Nbsaw</span>
       <i class="wx-profile__menu iconfont icon-menu"></i>
     </div>

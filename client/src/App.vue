@@ -50,7 +50,9 @@ export default {
   }
 
   body {
-    background: url(/static/bg.jpg) no-repeat 50%;
+    // style loader 导入这个图片到gh-pages的时候有问题
+    // 所以把图丢在了cdn上
+    background: url(http://ordlnvdfx.bkt.clouddn.com/bg.jpg) no-repeat 50%;
     background-size: cover;
   }
 

@@ -8,7 +8,7 @@
           TODO 缓存聊天记录
       -->
       <div v-for="(item,index) of historys" :key="index" class="wx-chatArea-message clearfix" :class="{'is-self' : item.self }">
-        <img class="wx-chatArea-message__avatar" :src="item.self ? '/static/mine.png' : contact[currentChatId].avatar">
+        <img class="wx-chatArea-message__avatar" :src="item.self ? './static/mine.png' : contact[currentChatId].avatar">
         <div class="wx-chatArea-message__bubble">{{item.msg}}</div>
       </div>
     </div>
