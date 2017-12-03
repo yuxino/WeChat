@@ -6,11 +6,8 @@
       <!--CopyRight-->
       <CopyRight></CopyRight>
       <!--App Menu-->
-      <component :is="currentMenu"
-                 v-show="menuStatus"
-                 :position="position"
-                 v-click-outside="_closeMenu">
-      </component>
+      <component :is="currentMenu"></component>
+      <Card></Card>
     </div>
 </template>
 
@@ -20,21 +17,15 @@ import WxMain from '@/components/main/Main'
 import CopyRight from '@/components/footer/CopyRight'
 import ChatListMenu from '@/components/menu/ChatListMenu'
 import ChatAreaMenu from '@/components/menu/ChatAreaMenu'
+import Card from '@/components/card/Card'
 
-import { mapState, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
-  components: {WxAside, WxMain, CopyRight, ChatListMenu, ChatAreaMenu},
+  components: {WxAside, WxMain, CopyRight, ChatListMenu, ChatAreaMenu, Card},
   computed: {
-    ...mapState(['currentMenu', 'menuStatus', 'position', 'menuStatus'])
-  },
-  methods: {
-    ...mapMutations(['closeMenu']),
-    // 防止疯狂提交commit
-    _closeMenu () {
-      this.menuStatus && this.$store.commit('closeMenu')
-    }
+    ...mapState(['currentMenu'])
   }
 }
 </script>

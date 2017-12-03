@@ -23,7 +23,7 @@ export default {
     color: $--copyright-color;
   }
 
-  @media (max-height: 800px){
+  @media (max-height: 800px) , (max-width:1000px){
     .wx-copyright {
      display: none
     }

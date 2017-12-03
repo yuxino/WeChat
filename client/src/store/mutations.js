@@ -16,6 +16,10 @@ const deleteOnList = function (list, id) {
     }
   }
 }
+// 查询字符串内是否包含指定字符
+const container = function (str, target) {
+  return String(str).indexOf(target) >= 0
+}
 const mutations = {
   viewChange (state, viewName) {
     state.currentView = viewName
@@ -33,8 +37,8 @@ const mutations = {
     let e = event
     state.menuStatus = true
     state.currentMenu = menuName
-    state.position = { top: `${e.clientY}px`, left: `${e.clientX}px` }
-    state.menuChatId = chatId.substr(1)
+    state.menuPosition = { top: `${e.clientY}px`, left: `${e.clientX}px` }
+    state.menuChatId = container(chatId, '_') ? chatId.substr(1) : chatId
   },
   closeMenu (state) {
     state.menuStatus = false
@@ -69,6 +73,15 @@ const mutations = {
     Vue.delete(state.chatsHistory, chatId)
     // close Menu
     state.menuStatus = false
+  },
+  showCard (state, {$event, currentChatId}) {
+    let e = event
+    state.cardChatId = currentChatId
+    state.cardStatus = true
+    state.cardPosition = { top: `${e.clientY}px`, left: `${e.clientX}px` }
+  },
+  closeCard (state) {
+    state.cardStatus = false
   },
   // TODO 还没想好怎么做这里
   addContact: state => {

@@ -18,7 +18,11 @@ const state = {
   // 按钮相关状态
   menuStatus: false,
   currentMenu: 'ChatListMenu',
-  position: {top: '0px', left: '0px'}
+  menuPosition: {top: '0px', left: '0px'},
+  // 卡片相关状态
+  cardChatId: null,
+  cardStatus: false,
+  cardPosition: {top: '0px', left: '0px'}
 }
 
 export default state

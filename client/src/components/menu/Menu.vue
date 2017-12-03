@@ -1,16 +1,25 @@
 <template>
-  <ul class="wx-menu" :style="position">
+  <ul class="wx-menu" :style="menuPosition"
+                      v-show="menuStatus"
+                      :position="menuPosition"
+                      v-click-outside="_closeMenu">
     <slot></slot>
   </ul>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   name: 'Menu',
-  props: {
-    position: {
-      type: Object,
-      required: true
+  computed: {
+    ...mapState(['menuStatus', 'menuPosition', 'menuStatus'])
+  },
+  methods: {
+    ...mapMutations(['closeMenu']),
+    // 防止疯狂提交commit
+    _closeMenu () {
+      this.menuStatus && this.$store.commit('closeMenu')
     }
   }
 }
