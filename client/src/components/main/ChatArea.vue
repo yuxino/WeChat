@@ -1,7 +1,7 @@
 <template>
   <div>
     <chat-title><span @click.stop="showCard({$event,currentChatId})">{{ currentChat.remarks || currentChat.userName}}</span></chat-title>
-    <div v-if="currentChatId" class="wx-chatArea-content" @contextmenu.prevent="showMenu({$event,menuName})">
+    <div v-if="currentChatId" ref="container" class="wx-chatArea-content" @contextmenu.prevent="showMenu({$event,menuName})">
       <p class="wx-chatArea-content__time">11:23</p>
       <!--遍历聊天记录
           TODO 时间算法
@@ -18,7 +18,8 @@
         </div>
         <div class="wx-chatArea-messageArea-text-box">
           <div class="wx-chatArea-messageArea-text-box__wrapper">
-              <textarea @input="type"
+              <textarea ref="textarea"
+                        @input="type"
                         @keydown.ctrl.enter="submit"
                         spellcheck="false">
               </textarea>
@@ -60,18 +61,17 @@ export default {
   },
   watch: {
     // 监视当前聊天对象的变更
-    currentChatId () {
+    async currentChatId () {
       // 只有id不为fasly的时候执行滚动条位置修正
       if (this.currentChatId) {
-        this.$nextTick(function () {
-          // 修正滚动条位置
-          let container = this.$el.querySelector('.wx-chatArea-content')
-          container.scrollTop = container.scrollHeight
-          // 设置 textarea 内保存过的信息
-          let textarea = this.$el.querySelector('textarea')
-          textarea.value = messageCache[this.currentChatId] || ''
-          textarea.focus()
-        })
+        await this.$nextTick()
+        // 修正滚动条位置
+        let container = this.$refs.container
+        container.scrollTop = container.scrollHeight
+        // 设置 textarea 内保存过的信息
+        let textarea = this.$refs.textarea
+        textarea.value = messageCache[this.currentChatId] || ''
+        textarea.focus()
       }
     }
   },
@@ -80,18 +80,17 @@ export default {
     type (e) {
       messageCache[this.currentChatId] = e.target.value
     },
-    submit (e) {
+    async submit (e) {
       this.$store.commit('sendMessage', messageCache[this.currentChatId])
       // 清空聊天框内容
-      let textarea = this.$el.querySelector('textarea')
+      let textarea = this.$refs.textarea
       textarea.value = ''
       // 清空缓存
       messageCache[this.currentChatId] = ''
       // 等待数据渲染完成后 调整滚动条
-      this.$nextTick(function () {
-        let container = this.$el.querySelector('.wx-chatArea-content')
-        container.scrollTop = container.scrollHeight
-      })
+      await this.$nextTick()
+      let container = this.$refs.container
+      container.scrollTop = container.scrollHeight
     }
   }
 }
