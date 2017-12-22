@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'title'
+  name: 'content-title'
 }
 </script>
 

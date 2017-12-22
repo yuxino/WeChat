@@ -9,7 +9,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import AsideHeader from './header'
+import AsideHeader from './Header'
 import ChatList from './ChatList'
 import SubjectList from './SubjectList'
 import ContactList from './ContactList'

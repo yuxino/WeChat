@@ -1,4 +1,4 @@
-import Vue from 'Vue'
+import Vue from 'vue'
 import _ from 'lodash'
 
 // 置顶列表里面和id相等的一项
