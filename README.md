@@ -1,27 +1,25 @@
 # WeChat
 
-> A Vue.js project
+一个基于 Vue 2 实现的桌面微信界面复现项目，用于练习复杂页面布局、组件拆分和前端状态管理。
 
-## Build Setup
+项目包含侧边栏、聊天区域、会话菜单、用户信息卡片等界面模块，并使用 Vuex 管理部分交互状态。
+
+## 技术栈
+
+- Vue 2
+- Vuex
+- Sass
+- Webpack
+
+## 本地运行
 
 ```bash
-# install dependencies
 npm install
-
-# serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+生产构建：
+
+```bash
+npm run build
+```
