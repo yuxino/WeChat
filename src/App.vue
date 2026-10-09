@@ -43,7 +43,7 @@ html {
 }
 
 body {
-  background: url(~/static/bg.jpg) no-repeat 50%;
+  background: url(../static/bg.jpg) no-repeat 50%;
   background-size: cover;
 }
 
