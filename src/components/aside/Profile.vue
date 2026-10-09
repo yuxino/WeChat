@@ -1,7 +1,7 @@
 <template>
     <div class="wx-profile clearfix">
-      <img @click.stop="showCard($event)" class="wx-profile__avatar" src="static/mine.jpg" alt="">
-      <span class="wx-profile__username">Nbsaw</span>
+      <img @click.stop="showCard($event)" class="wx-profile__avatar" src="static/yuxino.jpg" alt="">
+      <span class="wx-profile__username">yuxino</span>
       <i class="wx-profile__menu iconfont icon-menu"></i>
     </div>
 </template>

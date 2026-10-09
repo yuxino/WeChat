@@ -21,7 +21,7 @@ export default {
   name: 'ContactList',
   data () {
     return {
-      emptyTips: '咦 你一个联系人都没有...'
+      emptyTips: '暂无联系人'
     }
   },
   computed: {

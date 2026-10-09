@@ -90,7 +90,7 @@ const mutations = {
     //     avatar  : '/static/av7.jpg',
     //     bio     : '慢热 ！',
     //     sex     : 'male',
-    //     remarks : '张尻乐',
+    //     remarks : '张同学',
     //     location: '上海 虹口'
     // })
   }
