@@ -29,7 +29,7 @@ export default {
   name: 'ChatList',
   data () {
     return {
-      tips: '哇呜好可怜没有人和你交流...',
+      tips: '暂无聊天',
       menuName: 'ChatListMenu'
     }
   },

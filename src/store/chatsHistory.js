@@ -6,14 +6,14 @@ const msg = (str, time, self = false) => ({
 
 const chatsHistory = {
   '1000': [
-    msg('cnbb', new Date(), true),
-    msg('????', new Date()),
-    msg('rnmm', new Date(), true),
-    msg('cnm?', new Date())
+    msg('你好，最近怎么样？', new Date(), true),
+    msg('挺好的，你呢？', new Date()),
+    msg('我也不错，有空一起喝杯咖啡吧。', new Date(), true),
+    msg('好呀，周末见！', new Date())
   ],
   '1001': [
-    msg('hahahah', new Date()),
-    msg('2333333', new Date())
+    msg('周末一起去散步吗？', new Date()),
+    msg('下午两点在公园门口见吧。', new Date())
   ]
 }
 

@@ -2,11 +2,11 @@
   <div class="wx-card" :class="{ 'is-show' : cardStatus }"
                        :style="cardPosition"
                        v-click-outside="_closeCard">
-    <img class="wx-card__avatar" src="static/mine.jpg" alt="" v-if="cardChatId == null">
+    <img class="wx-card__avatar" src="static/yuxino.jpg" alt="" v-if="cardChatId == null">
     <img class="wx-card__avatar" :src="contact[cardChatId].avatar" alt="" v-else>
     <div class="wx-card-info" v-if="cardChatId == null">
-      Nbsaw  <i class="iconfont wx-card-info__icon is-male icon-nanren"></i>
-      <p>备注: 呵呵</p>
+      yuxino  <i class="iconfont wx-card-info__icon is-male icon-nanren"></i>
+      <p>备注: yuxino</p>
       <p>地区: 深圳</p>
     </div>
     <div class="wx-card-info" v-else>
@@ -87,4 +87,3 @@ export default {
     }
   }
 </style>
-

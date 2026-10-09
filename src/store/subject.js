@@ -1,30 +1,30 @@
 // temp data
 const subject = [
   {
-    userName: '123',
-    avatar: '/static/deep.png',
+    userName: '每日分享',
+    avatar: './static/av1.jpg',
     msg: [
       {
         time: '11:40',
-        content: 'Ass We Can'
+        content: '今天也要保持好心情。'
       },
       {
         time: '11:40',
-        content: 'Balbabla'
+        content: '分享一张今天拍的照片。'
       }
     ]
   },
   {
-    userName: '456',
-    avatar: '/static/van.png',
+    userName: '前端交流',
+    avatar: './static/av2.jpg',
     msg: [
       {
         time: '11:40',
-        content: '呵呵呵呵呵'
+        content: '有空一起交流一下最近的项目吧。'
       },
       {
         time: '11:40',
-        content: '发送到发送到'
+        content: '好的，晚点把资料发给你。'
       }
     ]
   }
