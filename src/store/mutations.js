@@ -86,11 +86,11 @@ const mutations = {
   // TODO 还没想好怎么做这里
   addContact: state => {
     // Vue.set(state.contact ,  , {
-    //     userName: 'Z.',
+    //     userName: 'Noah',
     //     avatar  : '/static/av7.jpg',
     //     bio     : '慢热 ！',
     //     sex     : 'male',
-    //     remarks : '张同学',
+    //     remarks : '',
     //     location: '上海 虹口'
     // })
   }
