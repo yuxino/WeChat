@@ -10,8 +10,7 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
-    "build": "node build/build.js",
-    "deploy": "npm run build && gh-pages -d dist"
+    "build": "node build/build.js"
   },
   "dependencies": {
     "pyfl": "^1.0.0",

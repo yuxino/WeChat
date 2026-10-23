@@ -23,3 +23,7 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## GitHub Pages
+
+[在线预览](https://yuxino.github.io/WeChat/)从 `main` 分支的 `docs/` 发布。更新预览时，构建项目后将 `dist/` 中的网页文件同步到 `docs/` 并提交到 `main`，不再向 `gh-pages` 分支推送。
